@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jade Immobilier-Présentation d'un bien{% endblock %}
+
+{% block body %}
+<section class="container-main">
+    <div class="container-header-main">
+        {{ include('_include/_mainNavigationBlack.html.twig') }}
+    </div>
+</section>
+
+<section class="container-large container-house">
+    <div class="bloc-house">
+        <div class="bloc-house_row">
+            <h1><span class="title-anim-bis">Villa dans le coeur de Bordeaux</span></h1>
+            <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren
+            </p>
+        </div>
+        <div class="bloc-house_row">
+            <div>
+                <p class="house-item_bold">Surface habitable</p>
+                <p>500 m2</p>
+            </div>
+            <div>
+                <p class="house-item_bold">Chambres</p>
+                <p>5</p>
+            </div>
+            <div>
+                <p class="house-item_bold">Prix <span>avec honoraires</span></p>
+                <p>2 600 000 €</p>
+            </div>
+            <div>
+                <p class="house-item_bold">Prix <span>sans honoraires</span></p>
+                <p>2 000 000 €<</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="img/img-bien-1.jpg" alt="">
+    </div>
+</section>
+
+<section class="container-large container-house_img">
+    <div>
+        <img src="img/img-bien-1.jpg" alt="">
+    </div>
+    <div>
+        <img src="img/img-bien-1.jpg" alt="">
+    </div>
+</section>
+
+<section class="container-medium container-house-desc">
+    <div>
+        <h2>Surfaces</h2>
+        <div>
+            <p class="house-item_bold">Surface habitable</p>
+            <p>500 m2</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Surface habitable</p>
+            <p>1 000 m2</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Surface de la terrasse</p>
+            <p>100 m2</p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Habitation</h2>
+        <div>
+            <p class="house-item_bold">Chambres</p>
+            <p>5</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Salle de bain</p>
+            <p>5</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Toilettes</p>
+            <p>4</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Nombre d'étage</p>
+            <p>2</p>
+        </div>
+        <div>
+            <p>Cheminée</p>
+            <p>Oui</p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Extérieur</h2>
+        <div>
+            <p class="house-item_bold">Piscine</p>
+            <p>Oui</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Garage</p>
+            <p>Oui</p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Autres</h2>
+        <div>
+            <p class="house-item_bold">Gardien</p>
+            <p>Non</p>
+        </div>
+        <div>
+            <p class="house-item_bold">Sécurité</p>
+            <p>Système d’alarme avec
+                caméra intérieur et extérieur</p>
+        </div>
+    </div>
+</section>
+
+<section class="container-bg container-carousel">
+    <div>
+        <h2>La galerie photos</h2>
+        <div class="carousel">
+            <img src="img/img-bien-1.jpg" alt="">
+            <img src="img/img-bien-1.jpg" alt="">
+            <img src="img/img-bien-1.jpg" alt="">
+            <img src="img/img-bien-1.jpg" alt="">
+            <img src="img/img-bien-1.jpg" alt="">
+        </div>
+
+        <div class="onsale-button-bloc onsale-button-galerie prevandnext">
+            <div class="button-prev prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z" fill="#FFFFFF"></path>
+                </svg>
+            </div>
+            <div class="button-next next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z" fill="#FFFFFF"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-large">
+    <div class="container-contact border-top-bottom">
+        <h2>Ce bien vous intéresse ? <br>N’hésitez pas à nous contacter.</h2>
+        <div class="button-1">
+            <a href="contact.html">Contactez-nous</a>
+        </div>
+    </div>
+</section>
+{{ include('_include/_mainFooter.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
+    <script src="{{ asset('js/carousel-2.js') }}"></script>
+{% endblock %}

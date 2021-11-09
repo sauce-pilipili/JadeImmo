@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="114.324" height="101.249" viewBox="0 0 114.324 101.249">
+  <g id="Groupe_428" data-name="Groupe 428" transform="translate(1 1)">
+    <g id="home">
+      <path id="Tracé_315" data-name="Tracé 315" d="M3,36.737,47.662,2,92.324,36.737V91.324a9.925,9.925,0,0,1-9.925,9.925H12.925A9.925,9.925,0,0,1,3,91.324Z" transform="translate(-3 -2)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Tracé_316" data-name="Tracé 316" d="M9,61.625V12H38.775V61.625" transform="translate(20.775 37.625)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <g id="Ellipse_14" data-name="Ellipse 14" transform="translate(66.324 16.445)" fill="#685d58" stroke="#fff" stroke-width="2">
+      <circle cx="23.5" cy="23.5" r="23.5" stroke="none"/>
+      <circle cx="23.5" cy="23.5" r="22.5" fill="none"/>
+    </g>
+    <g id="refresh-cw" transform="translate(79.648 31.122)">
+      <path id="Tracé_317" data-name="Tracé 317" d="M22.55,4V9.55H17" transform="translate(-2.199 -3.077)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Tracé_318" data-name="Tracé 318" d="M1,19.55V14H6.55" transform="translate(-1 -3.826)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Tracé_319" data-name="Tracé 319" d="M3.322,8.551A8.326,8.326,0,0,1,17.059,5.442l4.292,4.033M1,13.176l4.292,4.033A8.326,8.326,0,0,0,19.03,14.1" transform="translate(-1 -3.002)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

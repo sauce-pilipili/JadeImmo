@@ -1,0 +1,86 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Jade Immobilier-Mentions-légales{% endblock %}
+
+{% block body %}
+<section class="container-main">
+    <div class="container-header-main">
+{{ include('_include/_mainNavigationBlack.html.twig') }}
+    </div>
+</section>
+
+    <section class="container-medium container-mentions">
+        <div class="title-mentions">
+            <h1><span class="title-anim-bis">Les mentions légales</span></h1>
+            <p>D’après la loi n°2004-575 du 21 juin 2004, les mentions légales doivent apparaitre sur un site internet afin de donner des informations sur l’entreprise et sur l’utilisation des données.</p>
+        </div>
+
+        <div>
+            <h2>Information sur l’agence</h2>
+            <p><span>Nom : </span>JADE IMMOBILIER</p>
+            <p><span>Propriétaire : </span>JADE IMMOBILIER</p>
+            <p><span>N° SIRET : </span></p>
+            <p><span>N° TVA : </span></p>
+            <p><span>Forme juridique :</span></p>
+            <p><span>Adresse mail : </span><a href="">contact@jadeimmobilier.com</a></p>
+            <p><span>Personne en charge de la publication : </span>Arthur JOYAUX</p>
+            <p><span>Hébergeur du site : </span>OVH – 2 rue Kellermann 59100 Roubaix (France)</p>
+            <p><span>Création du site : </span><a href="">Agence Backstages</a></p>
+        </div>
+        <div>
+            <h2>Utilisation des cookies</h2>
+            <p>
+                Un cookie est un petit fichier informatique, un traceur. Il permet d’analyser le comportement des usagers lors de la visite d’un site internet, de la lecture d’un courrier électronique, de l’installation ou de l’utilisation d’un logiciel ou d’une application mobile.</p>
+            <p>
+                Ce site utilise un service d’analyse d’audience qui génère donc des cookies. Il va permettre d’analyser le comportement de vos usages lors de la visite de notre site internet, et ainsi d’améliorer votre expérience. Dés que vous arrivez sur le site internet, un bandeau en bas de page s’affiche afin de vous demander votre consentement pour que ce service analyse votre visite sur le site.
+            </p>
+            <p>
+                Sachez que la durée de validité du consentement donné dans ce cadre est de 13 mois maximum.
+                Tous les 13 mois, nous redemandons un consentement des visiteurs du site internet pour le traitement des cookies.
+            </p>
+        </div>
+        <div>
+            <h2>Utilisation des données personnelles collectées</h2>
+            <p>
+                Sur le site internet, nous avons mis en place différents types de formulaires qui récupèrent vos données personnelles :
+            </p>
+            <p>
+                <span>Formulaire de contact :</span> Votre nom, prénom, adresse e-mail et numéro de téléphone vont nous permettre de répondre à votre demande et de vous contacter suite à votre prise de contact.</p>
+            <p>
+            <p>
+                <span>Formulaire d'estimation en ligne :</span> Votre nom, prénom, adresse e-mail, numéro de téléphone, type de bien, disponibilité du bien, surface du bien, l'adresse, la ville et le code postale vont nous permettre de répondre à votre demande d'estimation en ligne. Nous vous contacterons ensuite par téléphone ou par mail pour finaliser l'estimation.</p>
+            <p>
+            <p>
+                À la fin de chaque formulaire, nous vous demandons votre consentement afin de collecter et conserver vos données personnelles.
+            </p>
+        </div>
+        <div>
+            <h2>Transmission de vos données personnelles</h2>
+            <p>
+                Vous pouvez nous écrire à l’adresse <span><a href="mailto:contact@jade.com">contact@jade.com</a></span> concernant toutes vos questions sur la protection de vos données personnelles.
+            </p>
+            <p>
+                Les données récoltées ne sont ni collectées ni utilisées par des services tiers.
+            </p>
+        </div>
+        <div>
+            <h2>Durées de stockage de vos données</h2>
+            <p>
+                Nous supprimons automatiquement toutes les données personnelles des personnes inactives depuis 3 ans de notre base de données. Vous pouvez demander, à tout moment, la suppression, la rectification ou la restitution de vos données personnelles. Nous réaliserons cette action dans un délai d’1 mois.
+            </p>
+            <p>
+                Vous pouvez faire une réclamation auprès de la CNIL, si vos droits ne sont respectés.
+            </p>
+        </div>
+    </section>
+
+
+
+    {{ include('_include/_mainFooter.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

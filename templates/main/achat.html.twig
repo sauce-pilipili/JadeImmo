@@ -1,0 +1,264 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jade Immobilier-Acheter{% endblock %}
+
+{% block body %}
+<section class="container-home-bis">
+    <div class="container-header-bis">
+        <header class="header container-large">
+            <div class="header-items header-white">
+                {{ include('_include/_mainNavigation.html.twig') }}
+            </div>
+        </header>
+        <div class="home-img-bis">
+            <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
+        </div>
+        <div class="home-title-search container-large">
+            <div class="home-title-bis">
+                <h1><span class="title-anim-bis">Les biens en vente</span></h1>
+            </div>
+            <div class="container-search-bis">
+                <form action="">
+                    <div class="border-right custom-select">
+                        <select class="" name="" id="">
+                            <option value="">Localisation</option>
+                            <option value="">Bordeaux</option>
+                            <option value="">Cap Ferret</option>
+                            <option value="">Arcachon</option>
+                            <option value="">Bruges</option>
+                        </select>
+                    </div>
+                    <div class="border-right custom-select">
+                        <select class="" name="" id="">
+                            <option value="">Type de bien</option>
+                            <option value="">Appartement</option>
+                            <option value="">Maison</option>
+                            <option value="">Villa</option>
+                            <option value="">Immeuble</option>
+                        </select>
+                    </div>
+                    <div class="border-right">
+                        <input type="text" name="" id="" placeholder="Surface minimum">
+                        <span>m2</span>
+                    </div>
+                    <div class="border-none">
+                        <input type="text" name="" id="" placeholder="Prix maximum">
+                        <span>€</span>
+                    </div>
+                    <div class="search-buttons-mobile">
+                        <input class="button-1" type="submit">
+                        <div class="dropdown">
+                            <div onclick="myFunctionBis()" class="dropbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
+                                    <path xmlns="http://www.w3.org/2000/svg" d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z" fill="#0D0D0D"></path>
+                                </svg>
+                            </div>
+                            <div id="myDropdown" class="dropdown-content">
+                                <div class="dropdown-row">
+                                    <label for="chambre">Nombre de chambres</label>
+                                    <div class="dropdown-spinner">
+                                        <span class="spinner" data-op="-1">-</span>
+                                        <input class="quanti-invitati" type="number" value="1" min="1" max="20" id="chambre" name="chambre">
+                                        <span class="spinner" data-op="1">+</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="piece">Nombre de pièces</label>
+                                    <div class="dropdown-spinner">
+                                        <span class="spinner-bis" data-op="-1">-</span>
+                                        <input class="quanti-invitati-bis" type="number" value="1" min="1" max="20" id="piece" name="piece">
+                                        <span class="spinner-bis" data-op="1">+</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="surface-bien">Surface du bien</label>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-bien" name="surface-bien" placeholder="Surface minimum"><span>m2</span>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-bien" name="surface-bien" placeholder="Surface maximum"><span>m2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="surface-terrain">Surface du terrain</label>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-terrain" name="surface-terrain" placeholder="Surface minimum"><span>m2</span>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-terrain" name="surface-terrain" placeholder="Surface maximum"><span>m2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <p>Équipement</p>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-col">
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="piscine" name="piscine">
+                                                <label for="piscine">Piscine</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="terrasse" name="terrasse">
+                                                <label for="terrasse">Terrasse</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="balcon" name="balcon">
+                                                <label for="balcon">Balcon</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="dropdown-col">
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="jardin" name="jardin">
+                                                <label for="jardin">Jardin</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="cave" name="cave">
+                                                <label for="cave">Cave</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="parking" name="parking">
+                                                <label for="parking">Parking</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-onsale container-large">
+    <div class="container-onsale-item" >
+        <a href="presentation-bien.html">
+            <div class="container-onsale-item-img">
+                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+            </div>
+            <h3>Bordeaux</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </a>
+    </div>
+    <div class="container-onsale-item">
+        <div class="container-onsale-item-img">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+        </div>
+        <h3>Cap Ferret</h3>
+        <div class="item-desc">
+            <p>200 m2</p>
+            <p>6ch</p>
+            <p>3sdb</p>
+            <p>Jardin 1ha</p>
+        </div>
+    </div>
+    <div class="container-onsale-item">
+        <div class="container-onsale-item-img">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+        </div>
+        <h3>Cap Ferret</h3>
+        <div class="item-desc">
+            <p>200 m2</p>
+            <p>6ch</p>
+            <p>3sdb</p>
+            <p>Jardin 1ha</p>
+        </div>
+    </div>
+    <div class="container-onsale-item">
+        <div class="container-onsale-item-img">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+        </div>
+        <h3>Cap Ferret</h3>
+        <div class="item-desc">
+            <p>200 m2</p>
+            <p>6ch</p>
+            <p>3sdb</p>
+            <p>Jardin 1ha</p>
+        </div>
+    </div>
+    <div class="container-onsale-item">
+        <div class="container-onsale-item-img">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+        </div>
+        <h3>Cap Ferret</h3>
+        <div class="item-desc">
+            <p>200 m2</p>
+            <p>6ch</p>
+            <p>3sdb</p>
+            <p>Jardin 1ha</p>
+        </div>
+    </div>
+</section>
+
+<section class="container-large button-plus">
+    <div class="button-1">
+        <a href="">Voir plus de biens</a>
+    </div>
+</section>
+
+<section class="container-love container-large">
+    <h2>Les coups de coeur de Jade</h2>
+    <div class="bloc-love">
+        <div class="love-item">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+            <h3>Bordeaux</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+        <div class="love-item">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+            <h3>Cap Ferret</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+        <div class="love-item">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+            <h3>Bordeaux</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-large">
+    <div class="container-contact border-top-bottom">
+        <h2>Vous cherchez à acheter ou vendre un bien d’exception ? </h2>
+        <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de vente.</p>
+        <div class="button-1">
+            <a href="">Contactez-nous</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('js/search-select.js') }}"></script>
+{% endblock %}

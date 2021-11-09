@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jade Immobilier-Actualité{% endblock %}
+
+{% block body %}
+<section class="container-home-bis">
+    <div class="container-header-bis">
+        {{ include('_include/_mainNavigation.html.twig') }}
+        <div class="home-img-bis">
+            <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
+        </div>
+        <div class="home-title-search container-large">
+            <div class="home-title-bis">
+                <h1><span class="title-anim-bis">Les actualités</span></h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-large container-actu">
+    <div>
+        <img src="{{ asset('img/actu-1.jpg') }}" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+    <div>
+        <img src="{{ asset('img/actu-1.jpg') }}" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+    <div>
+        <img src="img/actu-1.jpg"" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+    <div>
+        <img src="img/actu-1.jpg" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+    <div>
+        <img src="img/actu-1.jpg"" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+    <div>
+        <img src="img/actu-1.jpg"" alt="">
+        <h2>Comment vendre son bien à Bordeaux ?</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <a href="exemple-actu.html">Lire la suite</a>
+    </div>
+
+</section>
+
+<section class="container-large button-plus">
+    <div class="button-1">
+        <a href="">Voir plus d'actualités</a>
+    </div>
+</section>
+
+
+<section class="container-love container-large">
+    <h2>Les coups de coeur de Jade</h2>
+    <div class="bloc-love">
+        <div class="love-item">
+            <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
+            <h3>Bordeaux</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+        <div class="love-item">
+            <img src="img/image-coeur.jpg" alt="">
+            <h3>Cap Ferret</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+        <div class="love-item">
+            <img src="img/image-coeur.jpg" alt="">
+            <h3>Bordeaux</h3>
+            <div class="item-desc">
+                <p>200 m2</p>
+                <p>6ch</p>
+                <p>3sdb</p>
+                <p>Jardin 1ha</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-large">
+    <div class="container-contact border-top-bottom">
+        <h2>Vous cherchez à acheter ou vendre un bien d’exception ? </h2>
+        <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de vente.</p>
+        <div class="button-1">
+            <a href="">Contactez-nous</a>
+        </div>
+    </div>
+</section>
+{{ include('_include/_mainFooter.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

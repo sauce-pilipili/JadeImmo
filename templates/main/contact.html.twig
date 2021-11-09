@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jade Immobilier-Contact{% endblock %}
+
+{% block body %}
+    <section class="container-home-bis">
+        <div class="container-header-bis">
+            {{ include('_include/_mainNavigation.html.twig') }}
+            <div class="home-img home-img_bis">
+                <img src="{{ asset('img/contact.jpg') }}" alt="">
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="container-small">
+        <div class="bloc-contact">
+            <h1><span class="title-anim-bis">Contactez-nous</span></h1>
+            <p>Une question ? Une demande particulière ? L’équipe Jade est là pour y répondre.
+            </p>
+        </div>
+        <div class="bloc-form">
+            <form action="">
+                <div class="bloc-form_item form_name">
+                    <label for="name">Votre nom et prénom</label>
+                    <input type="text" name="name" placeholder="Indiquez votre nom et prénom">
+                </div>
+                <div class="bloc-form_item form_email">
+                    <label for="email">Votre adresse mail</label>
+                    <input type="email" name="email" placeholder="Indiquez votre adresse mail">
+                </div>
+                <div class="bloc-form_item form_tel">
+                    <label for="tel">Votre numéro de téléphone</label>
+                    <input type="tel" name="tel" placeholder="Indiquez votre numéro de téléphone">
+                </div>
+                <div class="bloc-form_item">
+                    <label for="description">Description compléte du bien</label>
+                    <textarea id="description" name="description" rows="5" cols="33"
+                              placeholder="Exemple : Je vends une villa de 300m2 avec un parc arboré de 1000m2. La villa possède 4 chambres avec salle de bain attenante, un séjour avec une cuisine américaine, un sellier et deux garages."></textarea>
+                </div>
+                <div class="bloc-form_consentement">
+                    <input type="checkbox" id="consentement" name="consentement">
+                    <label for="consentement">J’accepte que Jade Immobilier récupère les données ci-dessous afin de
+                        pouvoir répondre à ma demande</label>
+                </div>
+                <div class="bloc-form_submit">
+                    <input class="button-1" type="submit" value="Envoyer ma demande">
+                </div>
+            </form>
+        </div>
+    </section>
+    {{ include('_include/_mainFooter.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

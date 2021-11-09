@@ -1,0 +1,56 @@
+{{ form_start(form) }}
+<p>Ajouter une catégorie</p>
+{{ form_row(form.categorie) }}
+<p>Ajouter un titre</p>
+<span>Maximum 80 caractères</span>
+{{ form_row(form.title) }}
+<p>Ajouter une meta description</p>
+<span>Maximum 156 caractères</span>
+{{ form_row(form.metaDescription) }}
+<p>Contenu de l'article</p>
+{{ form_row(form.content) }}
+<p>Photo principale</p>
+<div class="upload-1">
+    {{ form_row(form.imageEnAvant,{'attr': {'class': 'article_photoEnAvant', 'onchange':"handleFilesAvant(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+    <div class="preview-image"><label for="upload"><span id="previewAvant">{% if article.imageEnAvant != null %}
+        {% if app.request.attributes.get('_route') == 'articles_edit' %}
+                    <img class="image-preview" src="{{ asset('/uploads/'~article.imageEnAvant.name) }}" alt="">
+                {% endif %}
+    {% endif %}</span></label></div>
+    <span id="file-select-button-1" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+</div>
+
+{#<p>Photos de fond de page</p>#}
+{#<span>Maximum 3 photos</span>#}
+{#<div class="upload-2">#}
+{#    {{ form_row(form.photoDeFond,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}#}
+{#    <div class="preview-image"><span id="previewFond">#}
+{#                {% if app.request.attributes.get('_route') == 'articles_edit' %}#}
+{#                    {% if article.photoFond != null %}#}
+{#                        {% for image in article.photoFond %}#}
+{#                            <div class="imageFormPreview">#}
+{#            <img src="{{ asset('/uploads/'~image.name) }}" alt="">#}
+{#            <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete#}
+{#               data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                {% endif %}#}
+{#            </span></div>#}
+{#    <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>#}
+{#</div>#}
+
+
+<div class="bouton-box">
+
+    <button class="bouton-1" style="border: none">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}
+<script>
+    $('#file-select-button-1').click(function () {
+        $('.upload-1 input').click();
+    });
+    $('#file-select-button-2').click(function () {
+        $('.upload-2 input').click();
+    });
+</script>

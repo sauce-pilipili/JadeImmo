@@ -1,0 +1,236 @@
+{{ form_start(form) }}
+<p>Ajouter un titre</p>
+<span>Maximum 80 caractères</span>
+{{ form_row(form.title) }}
+<p>Ajouter une meta description</p>
+<span>Maximum 156 caractères</span>
+{{ form_row(form.metaDescription) }}
+<p>Ajouter une description du bien</p>
+<span>Maximum 156 caractères</span>
+{{ form_row(form.descriptionDuBien) }}
+<p>Coup de coeur</p>
+<span>Maximum 3 biens coup de coeur</span>
+{% for child in form.coupDeCoeur %}
+    <div class="containerRadio">
+        {{- form_widget(child) -}}
+        {{- form_label(child, null) -}}
+        <span class="checkmark"></span>
+    </div>
+{% endfor %}
+<div class="honoraire-bloc">
+    <div class="honoraire-bloc-input">
+        <p>Prix avec honoraires</p>
+        {{ form_row(form.prixAvecHonoraires) }}
+    </div>
+    <div>
+        <p>Prix sans honoraires</p>
+        {{ form_row(form.prixSansHonoraires) }}
+    </div>
+</div>
+<p>Type de bien</p>
+{{ form_row(form.typeDeBien) }}
+<p>Localisation</p>
+{{ form_row(form.localisation) }}
+
+ <p>Ajouter une image de mise en avant</p>
+ <div class="upload-1">
+ {{ form_row(form.ImageEnAvant,{'attr': {'class': 'article_photoEnAvant', 'onchange':"handleFilesAvant(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+ <div class="preview-image"><label for="upload"><span id="previewAvant">{% if annonce.ImageEnAvant != null %}
+ {% if app.request.attributes.get('_route') == 'articles_edit' %}
+ <img class="image-preview" src="{{ asset('/uploads/'~annonce.ImageEnAvant.name) }}" alt="">
+ {% endif %}
+ {% endif %}</span></label></div>
+ <span id="file-select-button-1" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+ </div>
+
+ <p>Ajouter deux images du bien</p>
+ <span>Maximum 2 photos</span>
+ <div class="upload-2">
+ {{ form_row(form.imageDuo,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+ <div class="preview-image"><span id="previewFond">
+ {% if app.request.attributes.get('_route') == 'annonces_edit' %}
+ {% if annonce.photoFond != null %}
+ {% for image in annonce.imageDuo %}
+ <div class="imageFormPreview">
+ <img src="{{ asset('/uploads/'~image.name) }}" alt="">
+ <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete
+ data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
+ </div>
+ {% endfor %}
+ {% endif %}
+ {% endif %}
+ </span></div>
+ <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+ </div>
+
+<div class="honoraire-bloc">
+    <div class="honoraire-bloc-input">
+        <p>Surface habitable</p>
+        <span>en m²</span>
+        {{ form_row(form.surfaceHabitable) }}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Surface du terrain</p>
+        <span>en m²</span>
+        {{ form_row(form.surfaceDuTerrain) }}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Surface de la terrasse</p>
+        <span>en m²</span>
+        {{ form_row(form.surfaceDeLaTerrasse) }}
+    </div>
+</div>
+
+<div class="honoraire-bloc">
+    <div class="honoraire-bloc-input">
+        <p>Nombre de chambres</p>
+        {{ form_row(form.nombreDeChambre) }}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Nombre de salle de bain</p>
+        {{ form_row(form.nombreDeSalleDeBain) }}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Nombre de toilettes</p>
+        {{ form_row(form.nombreDeToilettes) }}
+    </div>
+</div>
+<div class="honoraire-bloc">
+    <div class="honoraire-bloc-input">
+        <p>Nombre d'étages</p>
+        {{ form_row(form.nombreEtages) }}
+    </div>
+
+    <div class="honoraire-bloc-input">
+        <p>Cheminée</p>
+        {% for child in form.cheminee %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="honoraire-bloc">
+    <div class="honoraire-bloc-input">
+        <p>Piscine</p>
+        {% for child in form.piscine %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Garage</p>
+        {% for child in form.garage %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Terrasse</p>
+        {% for child in form.terrasse %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Balcon</p>
+        {% for child in form.balcon %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Parking</p>
+        {% for child in form.parking %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Jardin</p>
+        {% for child in form.jardin %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Cave</p>
+        {% for child in form.cave %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="honoraire-bloc-input">
+        <p>Gardien</p>
+        {% for child in form.gardien %}
+            <div class="containerRadio">
+                {{- form_widget(child) -}}
+                {{- form_label(child, null) -}}
+                <span class="checkmark"></span>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+<p>Système de sécurité</p>
+{{ form_row(form.systemDeSecurite) }}
+
+
+<p>Ajouter des photos du bien pour la galerie</p>
+<div class="upload-2">
+    {{ form_row(form.photosGalerie,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+    <div class="preview-image"><span id="previewFond">
+ {% if app.request.attributes.get('_route') == 'annonces_edit' %}
+     {% if annonce.photoFond != null %}
+         {% for image in annonce.photosGalerie %}
+             <div class="imageFormPreview">
+ <img src="{{ asset('/uploads/'~image.name) }}" alt="">
+ <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete
+    data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
+ </div>
+         {% endfor %}
+     {% endif %}
+ {% endif %}
+ </span></div>
+    <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+</div>
+
+
+
+
+<div class="bouton-box">
+    <button class="bouton-1" style="border: none">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}
+<script>
+    $('#file-select-button-1').click(function () {
+        $('.upload-1 input').click();
+    });
+    $('#file-select-button-2').click(function () {
+        $('.upload-2 input').click();
+    });
+</script>

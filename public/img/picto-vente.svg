@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116.17" height="101.25" viewBox="0 0 116.17 101.25">
+  <g id="Groupe_530" data-name="Groupe 530" transform="translate(-424 -2320.811)">
+    <g id="home" transform="translate(425 2321.811)">
+      <path id="Tracé_315" data-name="Tracé 315" d="M3,36.737,47.662,2,92.324,36.737V91.324a9.925,9.925,0,0,1-9.925,9.925H12.925A9.925,9.925,0,0,1,3,91.324Z" transform="translate(-3 -2)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Tracé_316" data-name="Tracé 316" d="M9,61.625V12H38.775V61.625" transform="translate(20.775 37.625)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <g id="tag" transform="translate(491.976 2349.871) rotate(-14)">
+      <path id="Tracé_323" data-name="Tracé 323" d="M37.644,23.877,23.9,37.624a3.835,3.835,0,0,1-5.426,0L2,21.173V2H21.173l16.47,16.47A3.835,3.835,0,0,1,37.644,23.877Z" transform="translate(0 0)" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Ligne_162" data-name="Ligne 162" x2="0.019" transform="translate(11.587 11.587)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
