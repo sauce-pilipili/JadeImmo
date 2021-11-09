@@ -36,6 +36,20 @@ class AnnoncesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if ($form->get('photoEnAvant')->getData() != null) {
+                $image = $form->get('photoEnAvant')->getData();
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $img = new Photos();
+                $img->setName($fichier);
+                $annonce->setPhotoEnAvant($img);
+            }
+
+
             $entityManager->persist($annonce);
             $entityManager->flush();
 
