@@ -79,7 +79,25 @@
         <p>La première étape pour la vente de votre bien ? Son estimation. Jade met à votre service un savoir-faire et les outils nécessaires pour vous offrir une estimation la plus précise possible.</p>
     </div>
     <div class="bloc-form" >
-        <form action="">
+        <form method="post" action="">
+            {% for message in app.flashes('success') %}
+                <div class="greenalert">
+                    <div class="close" id="close" onclick="$('.fas').parents('.greenalert').remove();"><i
+                                class="fas fa-times"></i></div>
+                    <div class="success-alert">
+                        <p>{{ message }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+                <div class="redalert">
+                    <div class="close" id="close" onclick="$('.fas').parents('.redalert').remove();"><i
+                                class="fas fa-times"></i></div>
+                    <div class="danger-alert">
+                        <p>{{ message }}</p>
+                    </div>
+                </div>
+            {% endfor %}
             <h3>Les caractéristiques du bien</h3>
             <div class="bloc-form_item">
                 <p>Type de bien</p>
@@ -132,8 +150,7 @@
             </div>
             <div class="bloc-form_item">
                 <label for="description">Description compléte du bien</label>
-                <textarea id="description" name="description" rows="5" cols="33" placeholder="Exemple : Je vends une villa de 300m2 avec un parc arboré de 1000m2. La villa possède 4 chambres avec salle de bain attenante, un séjour avec une cuisine américaine, un sellier et deux garages.">
-                    </textarea>
+                <textarea id="description" name="description" rows="5" cols="33" placeholder="Exemple : Je vends une villa de 300m2 avec un parc arboré de 1000m2. La villa possède 4 chambres avec salle de bain attenante, un séjour avec une cuisine américaine, un sellier et deux garages."></textarea>
             </div>
             <h3>Vos informations</h3>
             <div class="bloc-form_item">

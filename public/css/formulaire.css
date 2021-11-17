@@ -59,6 +59,12 @@
     align-items: center;
     padding: 2%;
 }
+.upload-3 {
+    border: 1px  dashed #8a8a8a;
+    text-align: center;
+    align-items: center;
+    padding: 2%;
+}
 
 .upload-1 input{
     position: absolute;
@@ -76,11 +82,23 @@
     width: 1px;
     z-index: -5;
 }
+.upload-3 input{
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 3px;
+    height: 1px;
+    width: 1px;
+    z-index: -5;
+}
 .upload-1 span{
 cursor: pointer;
 font-weight: bold;
 }
 .upload-2 span{
+    cursor: pointer;
+    font-weight: bold;
+}
+.upload-3 span{
     cursor: pointer;
     font-weight: bold;
 }
@@ -108,6 +126,11 @@ font-weight: bold;
 }
 
 #previewFond{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#previewGalerie{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

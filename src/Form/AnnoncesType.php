@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Annonces;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -89,7 +88,7 @@ class AnnoncesType extends AbstractType
             ])
             ->add('imageDuo',FileType::class,[
                 'label' => false,
-                'multiple' => false,
+                'multiple' => true,
                 'mapped' => false,
                 'required' => false
             ])
@@ -108,6 +107,7 @@ class AnnoncesType extends AbstractType
                 ]
             ])
             ->add('surfaceDeLaTerrasse', NumberType::class, [
+                'required'=>false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Écrivez la surface en m²',
@@ -117,21 +117,21 @@ class AnnoncesType extends AbstractType
             ->add('nombreDeChambre', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Écrivez le nombre',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreDeSalleDeBain', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Écrivez le nombre²',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreDeToilettes', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Écrivez le nombre²',
                     'class' => 'inputFormHono',
                 ]
             ])
@@ -252,6 +252,7 @@ class AnnoncesType extends AbstractType
                 ]
             ])
         ->add('systemDeSecurite', TextType::class, [
+            'required'=> false,
             'label' => false,
             'attr' => [
                 'class' => 'inputForm',
@@ -259,7 +260,7 @@ class AnnoncesType extends AbstractType
         ])
         ->add('photosGalerie',FileType::class,[
         'label' => false,
-        'multiple' => false,
+        'multiple' => true,
         'mapped' => false,
         'required' => false
     ]);

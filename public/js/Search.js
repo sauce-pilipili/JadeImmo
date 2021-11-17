@@ -1,4 +1,5 @@
 function AjaxSearch(text) {
+
     $.ajax(
         {
             url: "",
@@ -7,6 +8,7 @@ function AjaxSearch(text) {
                 'text': text,
             },
             success: function (data) {
+                console.log(data.nom)
                  $("#bodylist").html(data.content);
             }
         }

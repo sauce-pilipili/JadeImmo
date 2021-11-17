@@ -1,0 +1,16 @@
+{% for annonce in annonces %}
+    <tr>
+
+        <td><a href="{{ path('annonces_edit', {'id': annonce.id}) }}">{{ annonce.title }}</a></td>
+        <td>{{ annonce.coupDeCoeur ? 'Oui' : 'Non' }}</td>
+        <td>{{ annonce.localisation }}</td>
+        <td>{{ annonce.prixAvecHonoraires }}</td>
+        <td>
+            {{ include('annonces/_delete_form.html.twig') }}
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="28">pas de résultat</td>
+    </tr>
+{% endfor %}

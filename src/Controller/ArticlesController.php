@@ -58,8 +58,6 @@ class ArticlesController extends AbstractController
                 $img->setname($fichier);
                 $article->setImageEnAvant($img);
             }
-
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -106,8 +104,9 @@ class ArticlesController extends AbstractController
                 $img = new Photos();
                 $img->setName($fichier);
                 $article->setImageEnAvant($img);
-                $this->getDoctrine()->getManager()->flush();
+
             }
+            $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('articles_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('articles/edit.html.twig', [
@@ -125,9 +124,9 @@ class ArticlesController extends AbstractController
         // On vérifie si le token est valide
         if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
             // On récupère le nom de l'image
-            $nom = $image->getName();
+            $nomImageASupprimer = $image->getName();
             // On supprime le fichier
-            unlink($this->getParameter('images_directory') . '/' . $nom);
+            unlink($this->getParameter('images_directory') . '/' . $nomImageASupprimer);
             // On supprime l'entrée de la base
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
@@ -147,6 +146,9 @@ class ArticlesController extends AbstractController
     public function delete(Request $request, Articles $article): Response
     {
         if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
+            if ($article->getImageEnAvant()!=null){
+                unlink($this->getParameter('images_directory') . '/' . $article->getImageEnAvant()->getName());
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();

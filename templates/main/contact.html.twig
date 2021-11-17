@@ -21,18 +21,37 @@
             </p>
         </div>
         <div class="bloc-form">
-            <form action="">
+
+            <form method="post" action="">
+                {% for message in app.flashes('success') %}
+                    <div class="greenalert">
+                        <div class="close" id="close" onclick="$('.fas').parents('.greenalert').remove();"><i
+                                    class="fas fa-times"></i></div>
+                        <div class="success-alert">
+                            <p>{{ message }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('danger') %}
+                    <div class="redalert">
+                        <div class="close" id="close" onclick="$('.fas').parents('.redalert').remove();"><i
+                                    class="fas fa-times"></i></div>
+                        <div class="danger-alert">
+                            <p>{{ message }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
                 <div class="bloc-form_item form_name">
                     <label for="name">Votre nom et prénom</label>
-                    <input type="text" name="name" placeholder="Indiquez votre nom et prénom">
+                    <input required type="text" name="name" placeholder="Indiquez votre nom et prénom">
                 </div>
                 <div class="bloc-form_item form_email">
                     <label for="email">Votre adresse mail</label>
-                    <input type="email" name="email" placeholder="Indiquez votre adresse mail">
+                    <input type="email" required name="email" placeholder="Indiquez votre adresse mail">
                 </div>
                 <div class="bloc-form_item form_tel">
                     <label for="tel">Votre numéro de téléphone</label>
-                    <input type="tel" name="tel" placeholder="Indiquez votre numéro de téléphone">
+                    <input type="tel" name="tel" required placeholder="Indiquez votre numéro de téléphone">
                 </div>
                 <div class="bloc-form_item">
                     <label for="description">Description compléte du bien</label>
@@ -40,7 +59,7 @@
                               placeholder="Exemple : Je vends une villa de 300m2 avec un parc arboré de 1000m2. La villa possède 4 chambres avec salle de bain attenante, un séjour avec une cuisine américaine, un sellier et deux garages."></textarea>
                 </div>
                 <div class="bloc-form_consentement">
-                    <input type="checkbox" id="consentement" name="consentement">
+                    <input required type="checkbox" id="consentement" name="consentement">
                     <label for="consentement">J’accepte que Jade Immobilier récupère les données ci-dessous afin de
                         pouvoir répondre à ma demande</label>
                 </div>

@@ -6,6 +6,7 @@ use App\Repository\AnnoncesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=AnnoncesRepository::class)
@@ -25,6 +26,7 @@ class Annonces
     private $title;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -35,7 +37,7 @@ class Annonces
     private $metaDescription;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $descriptionDuBien;
 
@@ -50,12 +52,12 @@ class Annonces
     private $localisation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Photos::class, inversedBy="annonceImageEnAvant")
+     * @ORM\ManyToOne(targetEntity=Photos::class, inversedBy="annonceImageEnAvant", cascade={"persist"} )
      */
     private $ImageEnAvant;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesImagesDuo")
+     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesImagesDuo",cascade={"persist","remove"}, orphanRemoval=true)
      */
     private $imagesDuo;
 
@@ -90,49 +92,49 @@ class Annonces
     private $nombreDeToilettes;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $nombreEtages;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $cheminee;
+    private $cheminee =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $piscine;
+    private $piscine =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $garage;
+    private $garage =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $balcon;
+    private $balcon =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $parking;
+    private $parking =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $jardin;
+    private $jardin =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $cave;
+    private $cave =0;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $gardien;
+    private $gardien =0;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -140,7 +142,7 @@ class Annonces
     private $systemDeSecurite;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesGalerie")
+     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesGalerie",cascade={"persist","remove"}, orphanRemoval=true)
      */
     private $photosGalerie;
 

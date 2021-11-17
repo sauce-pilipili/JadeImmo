@@ -138,36 +138,20 @@
     <section class="container-love container-large">
         <h2>Les coups de coeur de Jade</h2>
         <div class="bloc-love">
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
-                <h3>Bordeaux</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg')}}" alt="">
-                <h3>Cap Ferret</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
-                <h3>Bordeaux</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
+            {% for coeur in coupDeCoeur |slice(0,3) %}
+                <a href="{{ path('presentation',{id: coeur.id}) }}">
+                    <div class="love-item">
+                        <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                        <h3>{{ coeur.localisation }}</h3>
+                        <div class="item-desc">
+                            <p>{{ coeur.surfaceHabitable }}m2</p>
+                            <p>{{ coeur.nombreDeChambre }}ch</p>
+                            <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
+                            <p>terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     </section>
 

@@ -1,5 +1,5 @@
 {% extends 'baseAdmin.html.twig' %}
-{% block title %}Articles{% endblock %}
+{% block title %}Annonces{% endblock %}
     {% block body %}
         <div class="main">
             {{ include('_include/_navigation.html.twig') }}
@@ -39,23 +39,7 @@
                         </tr>
                         </thead>
                         <tbody id="bodylist">
-                        {% for annonce in annonces %}
-                            <tr>
-
-                                <td>{{ annonce.title }}</td>
-                                <td>{{ annonce.coupDeCoeur ? 'Yes' : 'No' }}</td>
-                                <td>{{ annonce.localisation }}</td>
-                                <td>{{ annonce.prixAvecHonoraires }}</td>
-                                <td>
-                                    <a href="{{ path('annonces_show', {'id': annonce.id}) }}">show</a>
-                                    <a href="{{ path('annonces_edit', {'id': annonce.id}) }}">edit</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="28">no records found</td>
-                            </tr>
-                        {% endfor %}
+                        {{ include('annonces/_contentAnnonces.html.twig') }}
                         </tbody>
                     </table>
                 </div>
@@ -69,5 +53,5 @@
     <link rel="stylesheet" href="{{ asset('css/container_central.css') }}">
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('js/ArticleSearch.js') }}"></script>
+    <script src="{{ asset('js/Search.js') }}"></script>
 {% endblock %}

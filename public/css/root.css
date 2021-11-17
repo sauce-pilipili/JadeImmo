@@ -112,3 +112,9 @@ input[type="date"] {
     color: var(--color-form);
     font-family: var(--font-text);
 }
+.greenalert{
+    color: #158425;
+}
+.redalert{
+    color: #cd0b0b;
+}

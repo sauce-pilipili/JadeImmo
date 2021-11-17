@@ -32,36 +32,47 @@
 <p>Localisation</p>
 {{ form_row(form.localisation) }}
 
- <p>Ajouter une image de mise en avant</p>
+<p>Ajouter une image de mise en avant</p>
  <div class="upload-1">
  {{ form_row(form.ImageEnAvant,{'attr': {'class': 'article_photoEnAvant', 'onchange':"handleFilesAvant(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
- <div class="preview-image"><label for="upload"><span id="previewAvant">{% if annonce.ImageEnAvant != null %}
- {% if app.request.attributes.get('_route') == 'articles_edit' %}
- <img class="image-preview" src="{{ asset('/uploads/'~annonce.ImageEnAvant.name) }}" alt="">
- {% endif %}
- {% endif %}</span></label></div>
- <span id="file-select-button-1" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+    <div class="preview-image">
+        <label for="upload">
+            <span id="previewAvant">
+                {% if app.request.attributes.get('_route') == 'annonces_edit' %}
+                    {% if annonce.ImageEnAvant != null %}
+                        <img class="image-preview" src="{{ asset('/uploads/'~annonce.ImageEnAvant.name) }}" alt="">
+                    {% endif %}
+                 {% endif %}
+            </span>
+        </label>
+    </div>
+ <span id="file-select-button-1" class="browse button black">{% if app.request.attributes.get('_route') == 'annonces_new' %}Ajouter une photo {% endif %}{% if app.request.attributes.get('_route') == 'annonces_edit' %}Modifier la photo {% endif %}<i class="fa fa-plus"></i></span>
  </div>
 
- <p>Ajouter deux images du bien</p>
- <span>Maximum 2 photos</span>
- <div class="upload-2">
- {{ form_row(form.imageDuo,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
- <div class="preview-image"><span id="previewFond">
+<p>Ajouter deux images du bien</p>
+<span>Maximum 2 photos</span>
+<div class="upload-2">
+    {{ form_row(form.imageDuo,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+    <div class="preview-image">
+        <label for="upload">
+            <span id="previewFond">
  {% if app.request.attributes.get('_route') == 'annonces_edit' %}
- {% if annonce.photoFond != null %}
- {% for image in annonce.imageDuo %}
- <div class="imageFormPreview">
- <img src="{{ asset('/uploads/'~image.name) }}" alt="">
- <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete
- data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
- </div>
- {% endfor %}
+     {% if annonce.imagesduo != null %}
+         {% for image in annonce.imagesDuo %}
+             <div class="imageFormPreview">
+                    <img src="{{ asset('/uploads/'~image.name) }}" alt="">
+                    <a href="{{ path('annonces_delete_image_duo', {id: image.id}) }}" data-delete
+                     data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
+             </div>
+         {% endfor %}
+     {% endif %}
  {% endif %}
- {% endif %}
- </span></div>
- <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
- </div>
+            </span>
+        </label>
+    </div>
+    <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+</div>
+
 
 <div class="honoraire-bloc">
     <div class="honoraire-bloc-input">
@@ -199,38 +210,39 @@
 <p>Système de sécurité</p>
 {{ form_row(form.systemDeSecurite) }}
 
-
 <p>Ajouter des photos du bien pour la galerie</p>
-<div class="upload-2">
-    {{ form_row(form.photosGalerie,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesFond(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
-    <div class="preview-image"><span id="previewFond">
+<div class="upload-3">
+    {{ form_row(form.photosGalerie,{'attr': {'class': 'article_photoDeFond', 'onchange':"handleFilesGalerie(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+    <div class="preview-image">
+        <label for="upload"><span id="previewGalerie">
  {% if app.request.attributes.get('_route') == 'annonces_edit' %}
-     {% if annonce.photoFond != null %}
+     {% if annonce.photosGalerie != null %}
          {% for image in annonce.photosGalerie %}
              <div class="imageFormPreview">
  <img src="{{ asset('/uploads/'~image.name) }}" alt="">
- <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete
+ <a href="{{ path('annonces_delete_image_galerie', {id: image.id}) }}" data-delete
     data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
  </div>
          {% endfor %}
      {% endif %}
  {% endif %}
- </span></div>
-    <span id="file-select-button-2" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
+            </span></label></div>
+    <span id="file-select-button-3" class="browse button black">Ajouter une photo <i class="fa fa-plus"></i></span>
 </div>
-
-
-
-
 <div class="bouton-box">
-    <button class="bouton-1" style="border: none">{{ button_label|default('Enregistrer') }}</button>
+    <button type="submit" class="bouton-1" style="border: none">Enregistrer</button>
 </div>
 {{ form_end(form) }}
+
+
 <script>
     $('#file-select-button-1').click(function () {
         $('.upload-1 input').click();
     });
     $('#file-select-button-2').click(function () {
         $('.upload-2 input').click();
+    });
+    $('#file-select-button-3').click(function () {
+        $('.upload-3 input').click();
     });
 </script>

@@ -3,140 +3,147 @@
 {% block title %}Jade Immobilier{% endblock %}
 
 {% block body %}
-{{ include('_include/_indexcouverture.html.twig') }}
-<section class="container-home">
-    <div class="container-header">
+{#    {{ include('_include/_indexcouverture.html.twig') }}#}
+    <section class="container-home">
+        <div class="container-header">
 
-                {{ include('_include/_mainNavigation.html.twig') }}
+            {{ include('_include/_mainNavigation.html.twig') }}
 
-        <div class="home-img">
-            <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
-        </div>
-        <div class="home-title container-large">
-            <h1><span class="title-anim">JADE<span class="title-grey">IMMOBILIER</span></span></h1>
-        </div>
-        <div class="container-search search-mobile">
-            <form action="">
-                <div class="border-right custom-select">
-                    <select class="" name="" id="">
-                        <option value="">Localisation</option>
-                        <option value="">Bordeaux</option>
-                        <option value="">Cap Ferret</option>
-                        <option value="">Arcachon</option>
-                        <option value="">Bruges</option>
-                    </select>
-                </div>
-                <div class="border-right custom-select">
-                    <select class="" name="" id="">
-                        <option value="">Type de bien</option>
-                        <option value="">Appartement</option>
-                        <option value="">Maison</option>
-                        <option value="">Villa</option>
-                        <option value="">Immeuble</option>
-                    </select>
-                </div>
-                <div class="border-right">
-                    <input type="text" name="" id="" placeholder="Surface minimum">
-                    <span>m2</span>
-                </div>
-                <div class="border-none">
-                    <input type="text" name="" id="" placeholder="Prix maximum">
-                    <span>€</span>
-                </div>
-                <input class="button-1" type="submit">
-                <div class="dropdown">
-                    <div onclick="myFunction()" class="dropbtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
-                            <path xmlns="http://www.w3.org/2000/svg" d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z" fill="#0D0D0D"></path>
-                        </svg>
+            <div class="home-img">
+                <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
+            </div>
+            <div class="home-title container-large">
+                <h1><span class="title-anim">JADE<span class="title-grey">IMMOBILIER</span></span></h1>
+            </div>
+            <div class="container-search search-mobile">
+                <form method="post" >
+                    <div class="border-right custom-select">
+                        <select class="" name="localisation" id="select-localisation">
+                            <option value="">Localisation</option>
+                        </select>
                     </div>
-                    <div id="myDropdown" class="dropdown-content">
-                        <div class="dropdown-row">
-                            <label for="chambre">Nombre de chambres</label>
-                            <div class="dropdown-spinner">
-                                <span class="spinner" data-op="-1">-</span>
-                                <input class="quanti-invitati" type="number" value="1" min="1" max="20" id="chambre" name="chambre">
-                                <span class="spinner" data-op="1">+</span>
-                            </div>
-                        </div>
-                        <div class="dropdown-row">
-                            <label for="piece">Nombre de pièces</label>
-                            <div class="dropdown-spinner">
-                                <span class="spinner-bis" data-op="-1">-</span>
-                                <input class="quanti-invitati-bis" type="number" value="1" min="1" max="20" id="piece" name="piece">
-                                <span class="spinner-bis" data-op="1">+</span>
-                            </div>
-                        </div>
-                        <div class="dropdown-row">
-                            <label for="surface-bien">Surface du bien</label>
-                            <div class="dropdown-bloc">
-                                <div class="dropdown-item">
-                                    <input type="number" id="surface-bien" name="surface-bien" placeholder="Surface minimum"><span>m2</span>
-                                </div>
-                                <div class="dropdown-item">
-                                    <input type="number" id="surface-bien" name="surface-bien" placeholder="Surface maximum"><span>m2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-row">
-                            <label for="surface-terrain">Surface du terrain</label>
-                            <div class="dropdown-bloc">
-                                <div class="dropdown-item">
-                                    <input type="number" id="surface-terrain" name="surface-terrain" placeholder="Surface minimum"><span>m2</span>
-                                </div>
-                                <div class="dropdown-item">
-                                    <input type="number" id="surface-terrain" name="surface-terrain" placeholder="Surface maximum"><span>m2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-row">
-                            <p>Équipement</p>
-                            <div class="dropdown-bloc">
-                                <div class="dropdown-col">
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="piscine" name="piscine">
-                                        <label for="piscine">Piscine</label>
-                                    </div>
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="terrasse" name="terrasse">
-                                        <label for="terrasse">Terrasse</label>
-                                    </div>
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="balcon" name="balcon">
-                                        <label for="balcon">Balcon</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="dropdown-col">
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="jardin" name="jardin">
-                                        <label for="jardin">Jardin</label>
-                                    </div>
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="cave" name="cave">
-                                        <label for="cave">Cave</label>
-                                    </div>
-                                    <div class="dropdown-item-2">
-                                        <input type="checkbox" id="parking" name="parking">
-                                        <label for="parking">Parking</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
+                    <div class="border-right custom-select">
+                        <select class="" name="typeDeBien" id="">
+                            <option value="">Type de bien</option>
+                            <option value="Appartement">Appartement</option>
+                            <option value="Maison">Maison</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Immeuble">Immeuble</option>
+                            <option value="Terrain">Terrain</option>
+                            <option value="Propriété/Chateau">Propriété/chateau</option>
+                        </select>
                     </div>
-                </div>
+                    <div class="border-right">
+                        <input type="text" name="surfaceMin" id="" placeholder="Surface minimum">
+                        <span>m2</span>
+                    </div>
+                    <div class="border-none">
+                        <input type="text" name="prixMax" id="prixMax" placeholder="Prix maximum">
+                        <span>€</span>
+                    </div>
+                    <input class="button-1" type="submit">
+                    <div class="dropdown">
+                        <div onclick="myFunction()" class="dropbtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24"
+                                 width="24">
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z"
+                                      fill="#0D0D0D"></path>
+                            </svg>
+                        </div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="dropdown-row">
+                                <label for="chambre">Nombre de chambres</label>
+                                <div class="dropdown-spinner">
+                                    <span class="spinner" data-op="-1">-</span>
+                                    <input class="quanti-invitati" type="number" value="1" min="1" max="20" id="chambre"
+                                           name="chambre">
+                                    <span class="spinner" data-op="1">+</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-row">
+                                <label for="piece">Nombre de salle de bains</label>
+                                <div class="dropdown-spinner">
+                                    <span class="spinner-bis" data-op="-1">-</span>
+                                    <input class="quanti-invitati-bis" type="number" value="1" min="1" max="20"
+                                           id="piece" name="piece">
+                                    <span class="spinner-bis" data-op="1">+</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-row">
+                                <label for="surface-bien">Surface du bien</label>
+                                <div class="dropdown-bloc">
+                                    <div class="dropdown-item">
+                                        <input type="number" id="surface-bien" name="surfaceBienMin"
+                                               placeholder="Surface minimum"><span>m2</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <input type="number" id="surface-bien" name="surfaceBienMax"
+                                               placeholder="Surface maximum"><span>m2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-row">
+                                <label for="surface-terrain">Surface du terrain</label>
+                                <div class="dropdown-bloc">
+                                    <div class="dropdown-item">
+                                        <input type="number" id="surface-terrain" name="surfaceTerrainMin"
+                                               placeholder="Surface minimum"><span>m2</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <input type="number" id="surface-terrain" name="surfaceTerrainMax"
+                                               placeholder="Surface maximum"><span>m2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-row">
+                                <p>Équipement</p>
+                                <div class="dropdown-bloc">
+                                    <div class="dropdown-col">
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="piscine" name="piscine">
+                                            <label for="piscine">Piscine</label>
+                                        </div>
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="terrasse" name="terrasse">
+                                            <label for="terrasse">Terrasse</label>
+                                        </div>
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="balcon" name="balcon">
+                                            <label for="balcon">Balcon</label>
+                                        </div>
 
-            </form>
+                                    </div>
+
+                                    <div class="dropdown-col">
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="jardin" name="jardin">
+                                            <label for="jardin">Jardin</label>
+                                        </div>
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="cave" name="cave">
+                                            <label for="cave">Cave</label>
+                                        </div>
+                                        <div class="dropdown-item-2">
+                                            <input type="checkbox" id="parking" name="parking">
+                                            <label for="parking">Parking</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="button-mobile">
+                <a class="button-1" href="{{ path('achat') }}">Je souhaite acheter</a>
+                <a class="button-1" href="{{ path('vendre') }}">Je souhaite vendre</a>
+            </div>
         </div>
-        <div class="button-mobile">
-            <a class="button-1" href="achat.html">Je souhaite acheter</a>
-            <a class="button-1" href="vendre.html">Je souhaite vendre</a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="container-agency container-medium">
         <div class="agency-img">
@@ -144,9 +151,15 @@
         </div>
         <div class="agency-desc bloc-text">
             <h2>Jade, une agence <br>à votre service</h2>
-            <p>Agence immobilière située à Bordeaux centre, nous vous guidons pour l’achat ou la vente de votre bien immobilier dans la région Bordelaise, le Bassin d'Arcachon ou encore le Cap Ferret. Savoir-faire, proximité et écoute sont au cœur des valeurs de Jade qui met à votre service une équipe d’agents immobiliers experts dans leur domaine. Tout au long du projet, nous vous assurons un suivi personnalisé et un accompagnement sur-mesure pour répondre au mieux à votre demande. Chez Jade, nous nous engageons à vous trouver le bien immobilier qui vous correspond ou vous présenter l’opportunité de vente que vous attendiez. </p>
+            <p>Agence immobilière située à Bordeaux centre, nous vous guidons pour l’achat ou la vente de votre bien
+                immobilier dans la région Bordelaise, le Bassin d'Arcachon ou encore le Cap Ferret. Savoir-faire,
+                proximité et écoute sont au cœur des valeurs de Jade qui met à votre service une équipe d’agents
+                immobiliers experts dans leur domaine. Tout au long du projet, nous vous assurons un suivi personnalisé
+                et un accompagnement sur-mesure pour répondre au mieux à votre demande. Chez Jade, nous nous engageons à
+                vous trouver le bien immobilier qui vous correspond ou vous présenter l’opportunité de vente que vous
+                attendiez. </p>
             <div>
-                <a class="button-1" href="l-agence.html">Découvrir l'agence</a>
+                <a class="button-1" href="{{ path('agence') }}">Découvrir l'agence</a>
             </div>
         </div>
     </section>
@@ -155,90 +168,55 @@
         <div class="onsale">
             <div class="container-medium onsale-desc bloc-text">
                 <h2>Les biens immobiliers en vente</h2>
-                <p>Jade Immobilier vous propose des biens d’exception à la hauteur de vos attentes. <br>Maison, appartement, villa, autant de biens immobiliers disponibles dans la région.</p>
+                <p>Jade Immobilier vous propose des biens d’exception à la hauteur de vos attentes. <br>Maison,
+                    appartement, villa, autant de biens immobiliers disponibles dans la région.</p>
             </div>
             <div class="onsale-bg">
                 <div class="onsale-item">
                     <div class="onsale-bloc carousel">
-                        <div class="onsale-bloc-item">
-                            <a href="presentation-bien.html">
-                                <div class="item-desc-img">
-                                    <img src="{{ asset('img/photo-maison-1.jpg') }}" alt="">
-                                </div>
-                                <div class="bloc-item-desc">
-                                    <h3>Bordeaux</h3>
-                                    <div class="item-desc">
-                                        <p>160 m2</p>
-                                        <p>4ch</p>
-                                        <p>Parking</p>
-                                        <p>Jardin 1ha</p>
+                        {% for annonce in annonces %}
+                            <div class="onsale-bloc-item">
+                                <a href="{{ path('presentation',{id: annonce.id}) }}">
+                                    <div class="item-desc-img">
+                                        <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
                                     </div>
-                                    <p class="item-desc-price">1 300 000 €</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="onsale-bloc-item">
-                            <div class="item-desc-img">
-                                <img src="{{ asset('img/photo-maison-1.jpg') }}" alt="">
+                                    <div class="bloc-item-desc">
+                                        <h3>Bordeaux</h3>
+                                        <div class="item-desc">
+                                            <p>{{ annonce.surfaceHabitable }} m2</p>
+                                            <p>{{ annonce.nombreDeChambre }}ch</p>
+                                            {% if annonce.parking %}
+                                                <p>Parking</p>
+                                            {% endif %}
+                                            <p>terrain {{ annonce.surfaceDuTerrain }} m2</p>
+                                        </div>
+                                        <p class="item-desc-price">{{ annonce.prixAvecHonoraires }}</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="bloc-item-desc">
-                                <h3>Bordeaux</h3>
-                                <div class="item-desc">
-                                    <p>160 m2</p>
-                                    <p>4ch</p>
-                                    <p>Parking</p>
-                                    <p>Jardin 1ha</p>
-                                </div>
-                                <p class="item-desc-price">2 300 000 €</p>
-                            </div>
-                        </div>
-                        <div class="onsale-bloc-item">
-                            <div class="item-desc-img">
-                                <img src="{{ asset('img/photo-maison-1.jpg') }}" alt="">
-                            </div>
-                            <div class="bloc-item-desc">
-                                <h3>Bordeaux</h3>
-                                <div class="item-desc">
-                                    <p>160 m2</p>
-                                    <p>4ch</p>
-                                    <p>Parking</p>
-                                    <p>Jardin 1ha</p>
-                                </div>
-                                <p class="item-desc-price">4 300 000 €</p>
-                            </div>
-                        </div>
-                        <div class="onsale-bloc-item">
-                            <div class="item-desc-img">
-                                <img src="{{ asset('img/photo-maison-1.jpg') }}" alt="">
-                            </div>
-                            <div class="bloc-item-desc">
-                                <h3>Bordeaux</h3>
-                                <div class="item-desc">
-                                    <p>160 m2</p>
-                                    <p>4ch</p>
-                                    <p>Parking</p>
-                                    <p>Jardin 1ha</p>
-                                </div>
-                                <p class="item-desc-price">4 300 000 €</p>
-                            </div>
-                        </div>
+                        {% endfor %}
+
                     </div>
                     <div class="onsale-button-bloc prevandnext">
                         <div class="button-prev prev">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
-                                <path xmlns="http://www.w3.org/2000/svg" d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z" fill="#FFFFFF"></path>
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z"
+                                      fill="#FFFFFF"></path>
                             </svg>
                         </div>
                         <div class="button-next next">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
-                                <path xmlns="http://www.w3.org/2000/svg" d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z" fill="#FFFFFF"></path>
+                                <path xmlns="http://www.w3.org/2000/svg"
+                                      d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z"
+                                      fill="#FFFFFF"></path>
                             </svg>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="onsale-desc container-medium">
-                <a class="button-2" href="achat.html">Voir tous les biens</a>
+                <a class="button-2" href="{{ path('achat') }}">Voir tous les biens</a>
             </div>
         </div>
     </section>
@@ -246,52 +224,40 @@
     <section class="container-love container-large">
         <h2>Les coups de coeur de Jade</h2>
         <div class="bloc-love">
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
-                <h3>Bordeaux</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
-                <h3>Cap Ferret</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
-            <div class="love-item">
-                <img src="{{ asset('img/image-coeur.jpg') }}" alt="">
-                <h3>Bordeaux</h3>
-                <div class="item-desc">
-                    <p>200 m2</p>
-                    <p>6ch</p>
-                    <p>3sdb</p>
-                    <p>Jardin 1ha</p>
-                </div>
-            </div>
+            {% for coeur in coupDeCoeur |slice(0,3) %}
+                <a href="{{ path('presentation',{id: coeur.id}) }}">
+                    <div class="love-item">
+                        <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                        <h3>{{ coeur.localisation }}</h3>
+                        <div class="item-desc">
+                            <p>{{ coeur.surfaceHabitable }}m2</p>
+                            <p>{{ coeur.nombreDeChambre }}ch</p>
+                            <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
+                            <p>terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+
         </div>
     </section>
 
     <section class="container-large">
         <div class="container-contact border-top-bottom">
             <h2>Vous cherchez à acheter ou vendre un bien d’exception ? </h2>
-            <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de vente.</p>
+            <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de
+                vente.</p>
             <div class="button-1">
-                <a href="contact.html">Contactez-nous</a>
+                <a href="{{ path('contact') }}">Contactez-nous</a>
             </div>
         </div>
     </section>
-{{ include('_include/_mainFooter.html.twig') }}
+    {{ include('_include/_mainFooter.html.twig') }}
+
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
     <script src="{{ asset('js/carousel.js') }}"></script>
     <script src="{{ asset('js/search-select.js') }}"></script>
+    <script src="{{ asset('js/localisation.js') }}"></script>
 {% endblock %}

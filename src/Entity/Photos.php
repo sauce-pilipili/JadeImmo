@@ -30,7 +30,7 @@ class Photos
     private $articleImagesEnAvant;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="ImageEnAvant")
+     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="ImageEnAvant", orphanRemoval=true)
      */
     private $annonceImageEnAvant;
 
@@ -40,7 +40,7 @@ class Photos
     private $annoncesImagesDuo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="photosGalerie")
+     * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="photosGalerie",cascade={"persist"})
      */
     private $annoncesGalerie;
 

@@ -23,11 +23,21 @@ class ArticlesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->select('a')
-            ->andWhere('a.titre LIKE :val')
+            ->andWhere('a.title LIKE :val')
             ->setParameter('val', '%'.$value.'%')
             ->getQuery()
             ->getResult()
             ;
+    }
+
+
+    public function findSimilaire($value){
+
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.categorie = :val')
+            ->setParameter('val',$value)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

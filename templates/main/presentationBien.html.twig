@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jade Immobilier-Présentation d'un bien{% endblock %}
+{% block title %}Jade Immobilier-{{ annonce.title }}{% endblock %}
 
 {% block body %}
 <section class="container-main">
@@ -12,42 +12,41 @@
 <section class="container-large container-house">
     <div class="bloc-house">
         <div class="bloc-house_row">
-            <h1><span class="title-anim-bis">Villa dans le coeur de Bordeaux</span></h1>
+            <h1><span class="title-anim-bis">{{ annonce.title }}</span></h1>
             <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren
+                {{ annonce.descriptionDuBien }}
             </p>
         </div>
         <div class="bloc-house_row">
             <div>
                 <p class="house-item_bold">Surface habitable</p>
-                <p>500 m2</p>
+                <p>{{ annonce.surfaceHabitable}} m2</p>
             </div>
             <div>
                 <p class="house-item_bold">Chambres</p>
-                <p>5</p>
+                <p>{{ annonce.nombreDeChambre }}</p>
             </div>
             <div>
                 <p class="house-item_bold">Prix <span>avec honoraires</span></p>
-                <p>2 600 000 €</p>
+                <p>{{ annonce.prixAvecHonoraires}} €</p>
             </div>
             <div>
                 <p class="house-item_bold">Prix <span>sans honoraires</span></p>
-                <p>2 000 000 €<</p>
+                <p>{{ annonce.prixSansHonoraires}} €</p>
             </div>
         </div>
     </div>
     <div>
-        <img src="img/img-bien-1.jpg" alt="">
+        <img src="{{ asset('/uploads/'~annonce.imageEnAvant) }}" alt="">
     </div>
 </section>
 
 <section class="container-large container-house_img">
+    {% for image in annonce.imagesDuo %}
     <div>
-        <img src="img/img-bien-1.jpg" alt="">
+        <img src="{{ asset('/uploads/'~image.name) }}" alt="">
     </div>
-    <div>
-        <img src="img/img-bien-1.jpg" alt="">
-    </div>
+    {% endfor %}
 </section>
 
 <section class="container-medium container-house-desc">
@@ -55,64 +54,106 @@
         <h2>Surfaces</h2>
         <div>
             <p class="house-item_bold">Surface habitable</p>
-            <p>500 m2</p>
+            <p>{{ annonce.surfaceHabitable}} m2</p>
         </div>
         <div>
-            <p class="house-item_bold">Surface habitable</p>
-            <p>1 000 m2</p>
+            <p class="house-item_bold">Surface du terrain</p>
+            <p>{{ annonce.surfaceDuTerrain}} m2</p>
         </div>
+        {% if  annonce.surfaceDeLaTerrasse %}
         <div>
             <p class="house-item_bold">Surface de la terrasse</p>
-            <p>100 m2</p>
+            <p>{{ annonce.surfaceDeLaTerrasse }} m2</p>
         </div>
+        {% endif %}
     </div>
 
     <div>
         <h2>Habitation</h2>
         <div>
             <p class="house-item_bold">Chambres</p>
-            <p>5</p>
+            <p>{{ annonce.nombreDeChambre }}</p>
         </div>
         <div>
             <p class="house-item_bold">Salle de bain</p>
-            <p>5</p>
+            <p>{{ annonce.nombreDeSalleDeBain }}</p>
         </div>
         <div>
             <p class="house-item_bold">Toilettes</p>
-            <p>4</p>
+            <p>{{ annonce.nombreDeToilettes }}</p>
         </div>
         <div>
             <p class="house-item_bold">Nombre d'étage</p>
-            <p>2</p>
+            <p>{{ annonce.nombreEtages }}</p>
         </div>
+        {% if annonce.cheminee %}
         <div>
-            <p>Cheminée</p>
+            <p class="house-item_bold">Cheminée</p>
             <p>Oui</p>
         </div>
+        {% endif %}
     </div>
 
     <div>
         <h2>Extérieur</h2>
+        {% if annonce.piscine %}
         <div>
             <p class="house-item_bold">Piscine</p>
             <p>Oui</p>
         </div>
+        {% endif %}
+        {% if annonce.garage %}
         <div>
             <p class="house-item_bold">Garage</p>
             <p>Oui</p>
         </div>
+        {% endif %}
+        {% if annonce.balcon %}
+        <div>
+            <p class="house-item_bold">Balcon</p>
+            <p>Oui</p>
+        </div>
+        {% endif %}
+        {% if annonce.parking %}
+            <div>
+                <p class="house-item_bold">Parking</p>
+                <p>Oui</p>
+            </div>
+        {% endif %}
+        {% if annonce.jardin %}
+            <div>
+                <p class="house-item_bold">Jardin</p>
+                <p>Oui</p>
+            </div>
+        {% endif %}
+        {% if annonce.cave %}
+            <div>
+                <p class="house-item_bold">Cave</p>
+                <p>Oui</p>
+            </div>
+        {% endif %}
     </div>
 
     <div>
         <h2>Autres</h2>
+
         <div>
             <p class="house-item_bold">Gardien</p>
+            {% if annonce.gardien %}
+            <p>Oui</p>
+            {% else %}
             <p>Non</p>
+            {% endif %}
         </div>
+
         <div>
             <p class="house-item_bold">Sécurité</p>
-            <p>Système d’alarme avec
-                caméra intérieur et extérieur</p>
+            {% if annonce.systemDeSecurite %}
+                <p>{{ annonce.systemDeSecurite }}</p>
+            {% else %}
+                <p>Aucun système de sécurité</p>
+            {% endif %}
+
         </div>
     </div>
 </section>
@@ -121,11 +162,9 @@
     <div>
         <h2>La galerie photos</h2>
         <div class="carousel">
-            <img src="img/img-bien-1.jpg" alt="">
-            <img src="img/img-bien-1.jpg" alt="">
-            <img src="img/img-bien-1.jpg" alt="">
-            <img src="img/img-bien-1.jpg" alt="">
-            <img src="img/img-bien-1.jpg" alt="">
+            {% for img in annonce.photosGalerie %}
+            <img src="{{ asset('/uploads/'~img.name) }}" alt="">
+            {% endfor %}
         </div>
 
         <div class="onsale-button-bloc onsale-button-galerie prevandnext">
@@ -147,7 +186,7 @@
     <div class="container-contact border-top-bottom">
         <h2>Ce bien vous intéresse ? <br>N’hésitez pas à nous contacter.</h2>
         <div class="button-1">
-            <a href="contact.html">Contactez-nous</a>
+            <a href="{{ path('contact') }}">Contactez-nous</a>
         </div>
     </div>
 </section>
