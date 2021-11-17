@@ -77,6 +77,7 @@ class AdminController extends AbstractController
                         $userPasswordHasherInterface->hashPassword(
                             $user,
                             $form->get('password')->getData()
+
                         )
                     );
                         $em= $this->getDoctrine()->getManager();
