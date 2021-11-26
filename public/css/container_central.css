@@ -73,7 +73,7 @@
 }
 
 .container-raccourci a {
-    color: black;
+    /*color: black;*/
     width: 100%;
     text-align: center;
     font-size: 1.4rem;
@@ -201,16 +201,20 @@ border-bottom: 1px solid #D1D1D1;
     background-color: var(--green-bg);
     padding: 14px;
     font-weight: bold;
-    color: #000;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     gap: 14px;
-
 }
-.bouton-1 :hover{
+
+.bouton-1 svg {
+    fill: #FFF;
+}
+
+.bouton-1 a:hover{
     cursor: pointer;
+    color: #FFFFFF;
 }
-
 
 .bouton-2 {
     background-color: #FFF;

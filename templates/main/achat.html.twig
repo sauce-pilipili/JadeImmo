@@ -44,7 +44,7 @@
                     </div>
                     <input class="button-1" type="submit">
                     <div class="dropdown">
-                        <div onclick="myFunction()" class="dropbtn">
+                        <div onclick="myFunctionBis()" class="dropbtn">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24"
                                  width="24">
                                 <path xmlns="http://www.w3.org/2000/svg"
@@ -52,23 +52,24 @@
                                       fill="#0D0D0D"></path>
                             </svg>
                         </div>
-                        <div id="myDropdown" class="dropdown-content">
+                        <div id="myDropdownachat" class="dropdown-content">
                             <div class="dropdown-row">
                                 <label for="chambre">Nombre de chambres</label>
                                 <div class="dropdown-spinner">
-                                    <span class="spinner" data-op="-1">-</span>
-                                    <input class="quanti-invitati" type="number" value="1" min="1" max="20" id="chambre"
+                                    <span class="spinner" onclick="majQuantite(-1,'chambre')" >-</span>
+                                    <input class="quanti-invitati" type="number" value="0" min="0" max="20" id="chambre"
                                            name="chambre">
-                                    <span class="spinner" data-op="1">+</span>
+                                    <span class="spinner" onclick="majQuantite(+1,'chambre')" >+</span>
                                 </div>
+
                             </div>
                             <div class="dropdown-row">
-                                <label for="piece">Nombre de salle de bains</label>
+                                <label for="piece">Nombre de pièces</label>
                                 <div class="dropdown-spinner">
-                                    <span class="spinner-bis" data-op="-1">-</span>
-                                    <input class="quanti-invitati-bis" type="number" value="1" min="1" max="20"
+                                    <span class="spinner-bis" onclick="majQuantite(-1,'piece')">-</span>
+                                    <input class="quanti-invitati-bis" type="number" value="0" min="0" max="20"
                                            id="piece" name="piece">
-                                    <span class="spinner-bis" data-op="1">+</span>
+                                    <span class="spinner-bis" onclick="majQuantite(+1,'piece')">+</span>
                                 </div>
                             </div>
                             <div class="dropdown-row">
@@ -157,7 +158,7 @@
     <h2>Les coups de coeur de Jade</h2>
     <div class="bloc-love">
         {% for coeur in coupDeCoeur |slice(0,3) %}
-            <a href="{{ path('presentation',{id: coeur.id}) }}">
+            <a href="{{ path('presentation',{slug: coeur.slug}) }}">
                 <div class="love-item">
                     <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
                     <h3>{{ coeur.localisation }}</h3>
@@ -183,7 +184,18 @@
     </div>
 </section>
     {{ include('_include/_mainFooter.html.twig') }}
+    <script>
+        function majQuantite(qte, champ)
+        {
+            quant = document.getElementById(champ).value;
+            quantite = parseInt(quant) + parseInt(qte);
+            // if (quantite <= 0) {quantite = 1;}
+            if (quantite > 20) {quantite = 20;}
+            document.getElementById(champ).value = quantite;
+        }
+    </script>
 {% endblock %}
 {% block javascripts %}
 <script src="{{ asset('js/search-select.js') }}"></script>
+    <script src="{{ asset('js/localisation.js') }}"></script>
 {% endblock %}

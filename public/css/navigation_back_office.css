@@ -83,7 +83,7 @@ h1, h2, h3, h4 {
     content: "";
     width: 11px;
     height: 46px;
-    background-color: #72C3B4;
+    background-color: var(--green-bg);
     margin-left: -30px;
     margin-right: 19px;
 }

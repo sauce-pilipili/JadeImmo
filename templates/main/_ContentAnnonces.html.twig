@@ -1,6 +1,7 @@
 {% for annonce in annonces %}
+
     <div class="container-onsale-item" >
-        <a href="{{ path('presentation',{id: annonce.id}) }}">
+        <a href="{{ path('presentation',{slug: annonce.slug}) }}">
             <div class="container-onsale-item-img">
                 <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
             </div>
@@ -9,8 +10,10 @@
                 <p>{{ annonce.surfaceHabitable }} m2</p>
                 <p>{{ annonce.nombreDeChambre }}ch</p>
                 <p>{{ annonce.nombreDeSalleDebain }}sdb</p>
-                <p>terrain: {{ annonce.surfaceDuTerrain}}m2</p>
+                <p>Terrain {{ annonce.surfaceDuTerrain}}m2</p>
+
             </div>
+            <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ')}} €</p>
         </a>
     </div>
 {% endfor %}

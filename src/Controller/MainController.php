@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Controller;
-
-use App\Entity\AnnoncesSearch;
-use App\Form\AnnoncesSearchType;
 use App\Repository\AnnoncesRepository;
 use App\Repository\ArticlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +19,7 @@ class MainController extends AbstractController
      */
     public function index(Request $request, AnnoncesRepository $annoncesRepository): Response
     {
-
+        $coupDeCoeur = $annoncesRepository->findCoupDeCoeur();
         if ($request->isXmlHttpRequest()) {
             $loctableau = [];
             $localisation = $annoncesRepository->findLocalisation();
@@ -35,42 +32,28 @@ class MainController extends AbstractController
         }
 
         if ($request->isMethod('post')) {
-//            dd( $request->get('localisation'),
-//                $request->get('typeDeBien'),
-//                $request->get('surfaceMin'),
-//                $request->get('prixMax'),
-//                $request->get('chambre'),
-//                $request->get('piece'),
-//                $request->get('surfaceBienMax'),
-//                $request->get('surfaceBienMin'),
-//                $request->get('surfaceTerrainMin'),
-//                $request->get('surfaceTerrainMax'),
-//                $request->get('piscine'),
-//                $request->get('terrasse'),
-//                $request->get('balcon'),
-//                $request->get('jardin'),
-//                $request->get('cave'),
-//                $request->get('parking'));
-            return $this->redirectToRoute('achat', [
-                'fromForm' => 'form',
-                'localisation'=> $request->get('localisation'),
-                'typeDeBien'=>$request->get('typeDeBien'),
-                'surfaceMin'=>$request->get('surfaceMin'),
-                'prixMax'=>$request->get('prixMax'),
-                'chambre'=>$request->get('chambre'),
-                'piece'=>$request->get('piece'),
-                'surfaceBienMax'=>$request->get('surfacebienMax'),
-                'surfaceBienMin'=>$request->get('surfaceBienMin'),
-                'surfaceTerrainMin'=>$request->get('surfaceTerrainMin'),
-                'surfaceTerrainMax'=>$request->get('surfaceTerrainMax'),
-                'piscine'=>$request->get('piscine'),
-                'terrasse'=>$request->get('terrasse'),
-                'balcon'=>$request->get('balcon'),
-                'jardin'=>$request->get('jardin'),
-                'cave'=>$request->get('cave'),
-                'parking'=>$request->get('parking',)
+            $annonces = $annoncesRepository->findAnnoncesByFormulaire(
+                $request->get('localisation'),
+                $request->get('typeDeBien'),
+                $request->get('surfaceMin'),
+                $request->get('prixMax'),
+                $request->get('chambre'),
+                $request->get('piece'),
+                $request->get('surfaceBienMax'),
+                $request->get('surfaceBienMin'),
+                $request->get('surfaceTerrainMin'),
+                $request->get('surfaceTerrainMax'),
+                $request->get('piscine'),
+                $request->get('terrasse'),
+                $request->get('balcon'),
+                $request->get('jardin'),
+                $request->get('cave'),
+                $request->get('parking')
+            );
+            return $this->render('main/achat.html.twig', [
+                'coupDeCoeur' => $coupDeCoeur,
+                'annonces' => $annonces,
             ]);
-
         }
 
         $coupDeCoeur = $annoncesRepository->findCoupDeCoeur();
@@ -82,10 +65,20 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/achat", name="achat")
+     * @Route("/achat/", name="achat")
      */
     public function achat(Request $request, AnnoncesRepository $annoncesRepository): Response
     {
+        if ($request->isXmlHttpRequest()) {
+            $loctableau = [];
+            $localisation = $annoncesRepository->findLocalisation();
+            foreach ($localisation as $loc) {
+                array_push($loctableau, $loc['localisation']);
+            }
+            return new JsonResponse([
+                'loc' => $loctableau
+            ]);
+        }
         $annonces = $annoncesRepository->findAllAnonces();
         if ($request->isMethod('post')){
             $annonces = $annoncesRepository->findAnnoncesByFormulaire(
@@ -107,27 +100,6 @@ class MainController extends AbstractController
                 $request->get('parking')
             );
         }
-        if ($request->get('fromForm') != null ) {
-            $annonces = $annoncesRepository->findAnnoncesByFormulaire(
-                $request->get('localisation'),
-                $request->get('typeDeBien'),
-                $request->get('surfaceMin'),
-                $request->get('prixMax'),
-                $request->get('chambre'),
-                $request->get('piece'),
-                $request->get('surfaceBienMax'),
-                $request->get('surfaceBienMin'),
-                $request->get('surfaceTerrainMin'),
-                $request->get('surfaceTerrainMax'),
-                $request->get('piscine'),
-                $request->get('terrasse'),
-                $request->get('balcon'),
-                $request->get('jardin'),
-                $request->get('cave'),
-                $request->get('parking')
-            );
-        }
-
         $coupDeCoeur = $annoncesRepository->findCoupDeCoeur();
         return $this->render('main/achat.html.twig', [
             'coupDeCoeur' => $coupDeCoeur,
@@ -204,14 +176,26 @@ class MainController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request, MailerInterface $mailer): Response
+    public function contact(Request $request, MailerInterface $mailer, AnnoncesRepository $annoncesRepository): Response
     {
+        if ($request->get('info')!= null){
+            $annonce = $annoncesRepository->find($request->get('info'));
+
+        }
         if ($request->isMethod('POST') && $request->get('consentement') == true) {
+            $subject = '';
+            if ($request->get('info')!= null){
+                $subject = 'Une nouvel demande de contact pour:'.$annonce->getTitle().' à '.$annonce->getLocalisation();
+            }else{
+                $subject= 'Une nouvel demande de contact';
+            }
+
+
             $emailContact = (new Email())
                 ->from($request->get('email'))
                 ->to('admin@mail.fr')
                 ->priority(Email::PRIORITY_HIGH)
-                ->subject('Une nouvel demande de contact')
+                ->subject($subject)
                 ->text('Le client: ' . $request->get('name') . ', numéro: ' . $request->get('tel') . ' a un message pour vous: ' . $request->get('description'));
             try {
                 $mailer->send($emailContact);
@@ -264,12 +248,11 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/presentation{id}", name="presentation")
+     * @Route("/presentation{slug}", name="presentation")
      */
-    public function presentationBien($id, Request $request, AnnoncesRepository $annoncesRepository): Response
+    public function presentationBien($slug, Request $request, AnnoncesRepository $annoncesRepository): Response
     {
-
-        $annonce = $annoncesRepository->find($id);
+        $annonce = $annoncesRepository->findOneBy(['slug'=>$slug]);
         return $this->render('main/presentationBien.html.twig', [
             'annonce' => $annonce,
         ]);

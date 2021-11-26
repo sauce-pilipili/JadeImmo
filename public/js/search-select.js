@@ -74,40 +74,9 @@ function closeAllSelect(elmnt) {
     }
   }
 }
-
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
-
-
-
-
-(function($) {
-    $('.spinner').on('click', function() {
-      var op = parseInt($(this).data('op'));
-      
-      var quantiInvitati = parseInt($('.quanti-invitati').val());
-      var quantiInvitatiMin = parseInt($('.quanti-invitati').attr('min'));
-      
-       $('.quanti-invitati').val(Math.max(quantiInvitatiMin, quantiInvitati + op));
-  
-    });
-  }(jQuery));
-  
-  (function($) {
-    $('.spinner-bis').on('click', function() {
-      var op = parseInt($(this).data('op'));
-      
-      var quantiInvitati = parseInt($('.quanti-invitati-bis').val());
-      var quantiInvitatiMin = parseInt($('.quanti-invitati-bis').attr('min'));
-      
-       $('.quanti-invitati-bis').val(Math.max(quantiInvitatiMin, quantiInvitati + op));
-       
-    });
-  }(jQuery));
-
-
-
   /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
         function myFunction() {
@@ -115,5 +84,5 @@ document.addEventListener("click", closeAllSelect);
         }
 
         function myFunctionBis() {
-          document.getElementById("myDropdown").classList.toggle("show-achat");
+          document.getElementById("myDropdownachat").classList.toggle("show-achat");
       }

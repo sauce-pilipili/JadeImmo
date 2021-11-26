@@ -65,73 +65,76 @@ class AnnoncesRepository extends ServiceEntityRepository
                                              $prixMax, $chambre, $piece, $surfaceBienMax, $surfaceBienMin, $surfaceTerrainMin,
                                              $surfaceTerrainMax, $piscine, $terrasse, $balcon, $jardin, $cave, $parking)
     {
+
+
         $qb = $this->createQueryBuilder('a');
-        if($localisation!=null && $localisation!='' &&$localisation!='Localisation'){
-                $qb->andWhere('a.localisation  =:val')
-                    ->setParameter('val', $localisation);
+        if($localisation!=null && $localisation!=''){
+                $qb->andWhere('a.localisation  LIKE :val')
+                    ->setParameter('val', '%'.$localisation.'%');
             }
         if($typeDeBien!=null && $typeDeBien!=''){
-            $qb->andWhere('a.typeDeBien = :val')
-                ->setParameter('val', $typeDeBien);
+            $qb->andWhere('a.typeDeBien LIKE :val')
+                ->setParameter('val','%'. $typeDeBien.'%');
         }
         if($surfaceMin!=null && $surfaceMin!=''){
-            $qb->andWhere('a.surfaceHabitable <= :val')
+            $qb->andWhere('a.surfaceHabitable >= :val')
                 ->setParameter('val', $surfaceMin);
         }
         if($prixMax!=null && $prixMax!=''){
             $qb->andWhere('a.prixAvecHonoraires <= :val')
                 ->setParameter('val', $prixMax);
         }
-        if($chambre!=null && $chambre!=''){
+        if($chambre!=null && $chambre!= 0){
             $qb->andWhere('a.nombreDeChambre = :val')
                 ->setParameter('val', $chambre);
         }
-        if($piece!=null && $piece!=''){
-            $qb->andWhere('a.nombreDeSalleDeBain = :val')
+        if($piece!=null && $piece!=0){
+            $qb->andWhere('a.nombreDePiece = :val')
                 ->setParameter('val', $piece);
         }
         if($surfaceBienMax!=null && $surfaceBienMax!=''){
-            $qb->andWhere('a.surfaceHabitable <= :val')
-                ->setParameter('val', $surfaceBienMax);
+            $qb->andWhere('a.surfaceHabitable <= :val1')
+                ->setParameter('val1', $surfaceBienMax);
         }
         if($surfaceBienMin!=null && $surfaceBienMin!=''){
-            $qb->andWhere('a.surfaceHabitable > :val')
-                ->setParameter('val', $surfaceBienMin);
+            $qb->andWhere('a.surfaceHabitable >= :val2')
+                ->setParameter('val2', $surfaceBienMin);
         }
+
         if($surfaceTerrainMin!=null && $surfaceTerrainMin!=''){
-            $qb->andWhere('a.surfaceDuTerrain > :val')
-                ->setParameter('val', $surfaceTerrainMin);
+            $qb->andWhere('a.surfaceDuTerrain >= :min')
+                ->setParameter('min', $surfaceTerrainMin);
         }
         if($surfaceTerrainMax!=null && $surfaceTerrainMax!=''){
-            $qb->andWhere('a.surfaceDuTerrain <= :val')
-                ->setParameter('val', $surfaceTerrainMax);
+            $qb->andWhere('a.surfaceDuTerrain <= :max')
+                ->setParameter('max', $surfaceTerrainMax);
         }
-        if($piscine!=null && $piscine!=''){
+        if($piscine == true){
             $qb->andWhere('a.piscine = :val')
-                ->setParameter('val', 1);
+                ->setParameter('val',true);
         }
-        if($terrasse!=null && $terrasse!=''){
+        if($terrasse==true){
             $qb->andWhere('a.terrasse = :val')
-                ->setParameter('val', 1);
+            ->setParameter('val',true);
         }
-        if($balcon!=null && $balcon!=''){
+        if($balcon==true){
             $qb->andWhere('a.balcon = :val')
-                ->setParameter('val', 1);
+                ->setParameter('val',true);
         }
-        if($jardin!=null && $jardin!=''){
+        if($jardin==true){
             $qb->andWhere('a.jardin = :val')
-                ->setParameter('val', 1);
+                ->setParameter('val', true);
         }
-        if($cave!=null && $cave!=''){
+        if($cave==true){
             $qb->andWhere('a.cave = :val')
-                ->setParameter('val', 1);
+                ->setParameter('val', true);
         }
-        if($parking!=null && $parking!=''){
+        if($parking==true){
             $qb->andWhere('a.parking = :val')
-                ->setParameter('val', 1);
+                ->setParameter('val', true);
         }
-            $qb->orderBy('a.id', 'ASC')
-            ->setMaxResults(10);
+            $qb->orderBy('a.id', 'ASC');
+
 
         return $qb->getQuery()
             ->getResult()

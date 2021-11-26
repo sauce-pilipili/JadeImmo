@@ -30,11 +30,6 @@ class Photos
     private $articleImagesEnAvant;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="ImageEnAvant", orphanRemoval=true)
-     */
-    private $annonceImageEnAvant;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="imagesDuo")
      */
     private $annoncesImagesDuo;
@@ -91,36 +86,6 @@ class Photos
             // set the owning side to null (unless already changed)
             if ($articleImagesEnAvant->getImageEnAvant() === $this) {
                 $articleImagesEnAvant->setImageEnAvant(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Annonces[]
-     */
-    public function getAnnonceImageEnAvant(): Collection
-    {
-        return $this->annonceImageEnAvant;
-    }
-
-    public function addAnnonceImageEnAvant(Annonces $annonceImageEnAvant): self
-    {
-        if (!$this->annonceImageEnAvant->contains($annonceImageEnAvant)) {
-            $this->annonceImageEnAvant[] = $annonceImageEnAvant;
-            $annonceImageEnAvant->setImageEnAvant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnnonceImageEnAvant(Annonces $annonceImageEnAvant): self
-    {
-        if ($this->annonceImageEnAvant->removeElement($annonceImageEnAvant)) {
-            // set the owning side to null (unless already changed)
-            if ($annonceImageEnAvant->getImageEnAvant() === $this) {
-                $annonceImageEnAvant->setImageEnAvant(null);
             }
         }
 

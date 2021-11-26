@@ -44,7 +44,7 @@ class Articles
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Photos::class, inversedBy="articleImagesEnAvant", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255)
      */
     private $imageEnAvant;
 
@@ -118,17 +118,23 @@ class Articles
         return $this;
     }
 
-    public function getImageEnAvant(): ?Photos
+    /**
+     * @return mixed
+     */
+    public function getImageEnAvant()
     {
         return $this->imageEnAvant;
     }
 
-    public function setImageEnAvant(?Photos $imageEnAvant): self
+    /**
+     * @param mixed $imageEnAvant
+     */
+    public function setImageEnAvant($imageEnAvant): void
     {
         $this->imageEnAvant = $imageEnAvant;
-
-        return $this;
     }
+
+
 
     public function getCategorie(): ?Categories
     {

@@ -28,11 +28,11 @@
             </div>
             <div>
                 <p class="house-item_bold">Prix <span>avec honoraires</span></p>
-                <p>{{ annonce.prixAvecHonoraires}} €</p>
+                <p>{{ annonce.prixAvecHonoraires|number_format(0,'.',' ')}} €</p>
             </div>
             <div>
                 <p class="house-item_bold">Prix <span>sans honoraires</span></p>
-                <p>{{ annonce.prixSansHonoraires}} €</p>
+                <p>{{ annonce.prixSansHonoraires|number_format(0,'.',' ')}} €</p>
             </div>
         </div>
     </div>
@@ -186,7 +186,7 @@
     <div class="container-contact border-top-bottom">
         <h2>Ce bien vous intéresse ? <br>N’hésitez pas à nous contacter.</h2>
         <div class="button-1">
-            <a href="{{ path('contact') }}">Contactez-nous</a>
+            <a href="{{ path('contact',{info: annonce.id}) }}">Contactez-nous</a>
         </div>
     </div>
 </section>

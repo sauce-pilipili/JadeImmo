@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b59ad399442757014dcc0afd5047062",
+    "content-hash": "81c913a5caece8f5fb48e7a5fe3aa830",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -1798,61 +1798,6 @@
                 "source": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/tree/2.3.0"
             },
             "time": "2020-12-26T14:29:00+00:00"
-        },
-        {
-            "name": "fzaninotto/faker",
-            "version": "v1.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
-                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0"
-            },
-            "require-dev": {
-                "ext-intl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "squizlabs/php_codesniffer": "^2.9.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "support": {
-                "issues": "https://github.com/fzaninotto/Faker/issues",
-                "source": "https://github.com/fzaninotto/Faker/tree/v1.9.2"
-            },
-            "abandoned": true,
-            "time": "2020-12-11T09:56:16+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -8314,6 +8259,61 @@
             "time": "2021-10-28T05:46:28+00:00"
         },
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "squizlabs/php_codesniffer": "^2.9.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "support": {
+                "issues": "https://github.com/fzaninotto/Faker/issues",
+                "source": "https://github.com/fzaninotto/Faker/tree/v1.9.2"
+            },
+            "abandoned": true,
+            "time": "2020-12-11T09:56:16+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.10.2",
             "source": {
@@ -10284,42 +10284,42 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.34.1",
+            "version": "v1.36.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "c9ae401f3fa2b42881120d33ad79416630d1f2be"
+                "reference": "0f40c826c0725208c254ddcd3481690e6c7e5047"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/c9ae401f3fa2b42881120d33ad79416630d1f2be",
-                "reference": "c9ae401f3fa2b42881120d33ad79416630d1f2be",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/0f40c826c0725208c254ddcd3481690e6c7e5047",
+                "reference": "0f40c826c0725208c254ddcd3481690e6c7e5047",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.2|^2.0",
                 "nikic/php-parser": "^4.11",
                 "php": ">=7.1.3",
-                "symfony/config": "^4.0|^5.0",
-                "symfony/console": "^4.0|^5.0",
-                "symfony/dependency-injection": "^4.0|^5.0",
+                "symfony/config": "^4.4|^5.0|^6.0",
+                "symfony/console": "^4.4|^5.0|^6.0",
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
                 "symfony/deprecation-contracts": "^2.2",
-                "symfony/filesystem": "^4.0|^5.0",
-                "symfony/finder": "^4.0|^5.0",
-                "symfony/framework-bundle": "^4.0|^5.0",
-                "symfony/http-kernel": "^4.0|^5.0"
+                "symfony/filesystem": "^4.4|^5.0|^6.0",
+                "symfony/finder": "^4.4|^5.0|^6.0",
+                "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+                "symfony/http-kernel": "^4.4|^5.0|^6.0"
             },
             "require-dev": {
-                "composer/semver": "^3.0@dev",
-                "doctrine/doctrine-bundle": "^1.8|^2.0",
+                "composer/semver": "^3.0",
+                "doctrine/doctrine-bundle": "^1.12.3|^2.0",
                 "doctrine/orm": "^2.3",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "friendsoftwig/twigcs": "^4.1.0|^5.0.0",
-                "symfony/http-client": "^4.3|^5.0",
-                "symfony/phpunit-bridge": "^4.3|^5.0",
-                "symfony/process": "^4.0|^5.0",
-                "symfony/security-core": "^4.0|^5.0",
-                "symfony/yaml": "^4.0|^5.0"
+                "symfony/http-client": "^4.4|^5.0|^6.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0|^6.0",
+                "symfony/polyfill-php80": "^1.16.0",
+                "symfony/process": "^4.4|^5.0|^6.0",
+                "symfony/security-core": "^4.4|^5.0|^6.0",
+                "symfony/yaml": "^4.4|^5.0|^6.0",
+                "twig/twig": "^2.0|^3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -10352,7 +10352,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/maker-bundle/issues",
-                "source": "https://github.com/symfony/maker-bundle/tree/v1.34.1"
+                "source": "https://github.com/symfony/maker-bundle/tree/v1.36.3"
             },
             "funding": [
                 {
@@ -10368,7 +10368,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-13T15:58:56+00:00"
+            "time": "2021-11-22T18:44:03+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",

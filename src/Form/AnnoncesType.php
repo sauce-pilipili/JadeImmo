@@ -49,14 +49,14 @@ class AnnoncesType extends AbstractType
                 'label' => false,
 
                 'attr' => [
-                    'placeholder' => 'Écrivez le prix en euros',
+                    'placeholder' => 'Inscrivez le prix en euros',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('prixSansHonoraires', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez le prix en euros',
+                    'placeholder' => 'Inscrivez le prix en euros',
                     'class' => 'inputFormHono',
                 ]
             ])
@@ -75,18 +75,25 @@ class AnnoncesType extends AbstractType
                     'class' => 'inputForm',
                 ]
             ])
+            ->add('nombreDePiece', NumberType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Inscrivez le nombre de pièces',
+                    'class' => 'inputFormHono',
+                ]
+            ])
             ->add('localisation', TextType::class, [
                 'label' => false,
                 'attr' => [
                     'class' => 'inputForm']
             ])
-            ->add('ImageEnAvant',FileType::class,[
+            ->add('ImageEnAvant', FileType::class, [
                 'label' => false,
                 'multiple' => false,
                 'mapped' => false,
                 'required' => false
             ])
-            ->add('imageDuo',FileType::class,[
+            ->add('imageDuo', FileType::class, [
                 'label' => false,
                 'multiple' => true,
                 'mapped' => false,
@@ -95,50 +102,50 @@ class AnnoncesType extends AbstractType
             ->add('surfaceHabitable', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Inscrivez la surface en m²',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('surfaceDuTerrain', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Inscrivez la surface en m²',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('surfaceDeLaTerrasse', NumberType::class, [
-                'required'=>false,
+                'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez la surface en m²',
+                    'placeholder' => 'Inscrivez la surface en m²',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreDeChambre', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez le nombre',
+                    'placeholder' => 'Inscrivez le nombre de chambres',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreDeSalleDeBain', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez le nombre²',
+                    'placeholder' => 'Inscrivez le nombre de salle de bains',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreDeToilettes', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez le nombre²',
+                    'placeholder' => 'Inscrivez le nombre de toilettes',
                     'class' => 'inputFormHono',
                 ]
             ])
             ->add('nombreEtages', NumberType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Écrivez le nombre',
+                    'placeholder' => 'Inscrivez le nombre d\'étages',
                     'class' => 'inputFormHono',
                 ]
             ])
@@ -238,7 +245,6 @@ class AnnoncesType extends AbstractType
                 'attr' => ['class' => 'inputCheck',
                 ]
             ])
-
             ->add('terrasse', ChoiceType::class, [
                 'choices' => [
                     'oui' => 1,
@@ -251,19 +257,19 @@ class AnnoncesType extends AbstractType
                 'attr' => ['class' => 'inputCheck',
                 ]
             ])
-        ->add('systemDeSecurite', TextType::class, [
-            'required'=> false,
-            'label' => false,
-            'attr' => [
-                'class' => 'inputForm',
-                'placeholder' => 'Décrivez le système de sécurité, si il y en as un',]
-        ])
-        ->add('photosGalerie',FileType::class,[
-        'label' => false,
-        'multiple' => true,
-        'mapped' => false,
-        'required' => false
-    ]);
+            ->add('systemDeSecurite', TextType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'class' => 'inputForm',
+                    'placeholder' => 'Décrivez le système de sécurité, si il y en as un',]
+            ])
+            ->add('photosGalerie', FileType::class, [
+                'label' => false,
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

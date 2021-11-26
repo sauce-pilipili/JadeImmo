@@ -36,6 +36,8 @@ class ArticlesRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.categorie = :val')
             ->setParameter('val',$value)
+            ->orderBy('a.createdDate','DESC')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }

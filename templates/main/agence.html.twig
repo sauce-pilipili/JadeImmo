@@ -139,7 +139,7 @@
         <h2>Les coups de coeur de Jade</h2>
         <div class="bloc-love">
             {% for coeur in coupDeCoeur |slice(0,3) %}
-                <a href="{{ path('presentation',{id: coeur.id}) }}">
+                <a href="{{ path('presentation',{slug: coeur.slug}) }}">
                     <div class="love-item">
                         <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
                         <h3>{{ coeur.localisation }}</h3>

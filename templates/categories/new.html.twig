@@ -9,7 +9,7 @@
                     <a class="bouton-2" href="{{ path('categories_index') }}">Quitter <i class="fas fa-times"></i></a>
                 </div>
                 <div class="welcome-container form">
-                    <div class="formCategorie"
+                    <div class="formCategorie">
                    {{ form_start(form) }}
                     <h2>Choissisez un nom de catégorie</h2>
                     <span>Maximum 80 caractères</span>
@@ -18,9 +18,10 @@
                     {{ form_end(form) }}
                 </div>
             </div>
-        </form>
+
         </div>
         </div>
     {% endblock %}
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/formulaire.css') }}">
 {% endblock %}

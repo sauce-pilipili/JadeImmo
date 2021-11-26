@@ -25,6 +25,11 @@
 a {
     text-decoration: none;
     color: inherit;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: var(--main-color);
 }
   
 li {
@@ -95,6 +100,10 @@ input, textarea {
     padding: 20px;
 }
 
+select {
+    background-color: transparent;
+}
+
 input[type="submit"] {
     cursor: pointer;
     border-radius: none;
@@ -112,9 +121,16 @@ input[type="date"] {
     color: var(--color-form);
     font-family: var(--font-text);
 }
+
 .greenalert{
     color: #158425;
 }
+
 .redalert{
     color: #cd0b0b;
+}
+
+.termsfeed-com---palette-light .cc-nb-okagree,
+.termsfeed-com---palette-light .cc-nb-reject {
+    background-color: var(--main-color) !important;
 }

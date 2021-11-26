@@ -3,7 +3,7 @@
 {% block title %}Jade Immobilier{% endblock %}
 
 {% block body %}
-{#    {{ include('_include/_indexcouverture.html.twig') }}#}
+    {{ include('_include/_indexcouverture.html.twig') }}
     <section class="container-home">
         <div class="container-header">
 
@@ -16,7 +16,8 @@
                 <h1><span class="title-anim">JADE<span class="title-grey">IMMOBILIER</span></span></h1>
             </div>
             <div class="container-search search-mobile">
-                <form method="post" >
+                <form method="post" target="{{ path('achat') }}">
+                    <input type="hidden" value="fromIndex">
                     <div class="border-right custom-select">
                         <select class="" name="localisation" id="select-localisation">
                             <option value="">Localisation</option>
@@ -55,21 +56,23 @@
                             <div class="dropdown-row">
                                 <label for="chambre">Nombre de chambres</label>
                                 <div class="dropdown-spinner">
-                                    <span class="spinner" data-op="-1">-</span>
-                                    <input class="quanti-invitati" type="number" value="1" min="1" max="20" id="chambre"
+                                    <span class="spinner" onclick="majQuantite(-1,'chambre')" >-</span>
+                                    <input class="quanti-invitati" type="number" value="0" min="0" max="20" id="chambre"
                                            name="chambre">
-                                    <span class="spinner" data-op="1">+</span>
+                                    <span class="spinner" onclick="majQuantite(+1,'chambre')" >+</span>
                                 </div>
+
                             </div>
                             <div class="dropdown-row">
-                                <label for="piece">Nombre de salle de bains</label>
+                                <label for="piece">Nombre de pièces</label>
                                 <div class="dropdown-spinner">
-                                    <span class="spinner-bis" data-op="-1">-</span>
-                                    <input class="quanti-invitati-bis" type="number" value="1" min="1" max="20"
+                                    <span class="spinner-bis" onclick="majQuantite(-1,'piece')">-</span>
+                                    <input class="quanti-invitati-bis" type="number" value="0" min="0" max="20"
                                            id="piece" name="piece">
-                                    <span class="spinner-bis" data-op="1">+</span>
+                                    <span class="spinner-bis" onclick="majQuantite(+1,'piece')">+</span>
                                 </div>
                             </div>
+
                             <div class="dropdown-row">
                                 <label for="surface-bien">Surface du bien</label>
                                 <div class="dropdown-bloc">
@@ -176,21 +179,21 @@
                     <div class="onsale-bloc carousel">
                         {% for annonce in annonces %}
                             <div class="onsale-bloc-item">
-                                <a href="{{ path('presentation',{id: annonce.id}) }}">
+                                <a href="{{ path('presentation',{slug: annonce.slug}) }}">
                                     <div class="item-desc-img">
-                                        <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
+                                        <img src="{{ asset('uploads/'~ annonce.imageEnAvant) }}" alt="">
                                     </div>
                                     <div class="bloc-item-desc">
-                                        <h3>Bordeaux</h3>
+                                        <h3>{{ annonce.localisation }}</h3>
                                         <div class="item-desc">
                                             <p>{{ annonce.surfaceHabitable }} m2</p>
                                             <p>{{ annonce.nombreDeChambre }}ch</p>
                                             {% if annonce.parking %}
                                                 <p>Parking</p>
                                             {% endif %}
-                                            <p>terrain {{ annonce.surfaceDuTerrain }} m2</p>
+                                            <p>Terrain {{ annonce.surfaceDuTerrain }} m2</p>
                                         </div>
-                                        <p class="item-desc-price">{{ annonce.prixAvecHonoraires }}</p>
+                                        <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ')}} €</p>
                                     </div>
                                 </a>
                             </div>
@@ -225,7 +228,7 @@
         <h2>Les coups de coeur de Jade</h2>
         <div class="bloc-love">
             {% for coeur in coupDeCoeur |slice(0,3) %}
-                <a href="{{ path('presentation',{id: coeur.id}) }}">
+                <a href="{{ path('presentation',{slug: coeur.slug}) }}">
                     <div class="love-item">
                         <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
                         <h3>{{ coeur.localisation }}</h3>
@@ -233,7 +236,7 @@
                             <p>{{ coeur.surfaceHabitable }}m2</p>
                             <p>{{ coeur.nombreDeChambre }}ch</p>
                             <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
-                            <p>terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                            <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
                         </div>
                     </div>
                 </a>
@@ -253,7 +256,16 @@
         </div>
     </section>
     {{ include('_include/_mainFooter.html.twig') }}
-
+    <script>
+        function majQuantite(qte, champ)
+        {
+            quant = document.getElementById(champ).value;
+            quantite = parseInt(quant) + parseInt(qte);
+            // if (quantite <= 0) {quantite = 0;}
+            if (quantite > 20) {quantite = 20;}
+            document.getElementById(champ).value = quantite;
+        }
+    </script>
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>

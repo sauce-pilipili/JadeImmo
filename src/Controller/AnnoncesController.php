@@ -56,9 +56,7 @@ class AnnoncesController extends AbstractController
                     $this->getParameter('images_directory'),
                     $fichier
                 );
-                $imageEnAvant = new Photos();
-                $imageEnAvant->setName($fichier);
-                $annonce->setImageEnAvant($imageEnAvant);
+                $annonce->setImageEnAvant($fichier);
 
             }
             if ($form->get('imageDuo')->getData() != null) {

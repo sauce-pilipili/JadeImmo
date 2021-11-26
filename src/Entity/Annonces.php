@@ -52,7 +52,28 @@ class Annonces
     private $localisation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Photos::class, inversedBy="annonceImageEnAvant", cascade={"persist"} )
+     * @return mixed
+     */
+    public function getNombreDePiece()
+    {
+        return $this->nombreDePiece;
+    }
+
+    /**
+     * @param mixed $nombreDePiece
+     */
+    public function setNombreDePiece($nombreDePiece): void
+    {
+        $this->nombreDePiece = $nombreDePiece;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nombreDePiece;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      */
     private $ImageEnAvant;
 
@@ -249,17 +270,7 @@ class Annonces
         return $this;
     }
 
-    public function getImageEnAvant(): ?Photos
-    {
-        return $this->ImageEnAvant;
-    }
 
-    public function setImageEnAvant(?Photos $ImageEnAvant): self
-    {
-        $this->ImageEnAvant = $ImageEnAvant;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Photos[]
@@ -397,6 +408,22 @@ class Annonces
         $this->piscine = $piscine;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageEnAvant()
+    {
+        return $this->ImageEnAvant;
+    }
+
+    /**
+     * @param mixed $ImageEnAvant
+     */
+    public function setImageEnAvant($ImageEnAvant): void
+    {
+        $this->ImageEnAvant = $ImageEnAvant;
     }
 
     public function getGarage(): ?bool
