@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Repository\AnnoncesRepository;
 use App\Repository\ArticlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,23 +34,24 @@ class MainController extends AbstractController
 
         if ($request->isMethod('post')) {
             $annonces = $annoncesRepository->findAnnoncesByFormulaire(
-                $request->get('localisation'),
-                $request->get('typeDeBien'),
-                $request->get('surfaceMin'),
-                $request->get('prixMax'),
-                $request->get('chambre'),
-                $request->get('piece'),
-                $request->get('surfaceBienMax'),
-                $request->get('surfaceBienMin'),
-                $request->get('surfaceTerrainMin'),
-                $request->get('surfaceTerrainMax'),
-                $request->get('piscine'),
-                $request->get('terrasse'),
-                $request->get('balcon'),
-                $request->get('jardin'),
-                $request->get('cave'),
-                $request->get('parking')
+                $this->test($request->get('localisation')),
+                $this->test($request->get('typeDeBien')),
+                $this->test($request->get('surfaceMin')),
+                $this->test($request->get('prixMax')),
+                $this->test($request->get('chambre')),
+                $this->test($request->get('piece')),
+                $this->test($request->get('surfaceBienMax')),
+                $this->test($request->get('surfaceBienMin')),
+                $this->test($request->get('surfaceTerrainMin')),
+                $this->test($request->get('surfaceTerrainMax')),
+                $this->test($request->get('piscine')),
+                $this->test($request->get('terrasse')),
+                $this->test($request->get('balcon')),
+                $this->test($request->get('jardin')),
+                $this->test($request->get('cave')),
+                $this->test($request->get('parking'))
             );
+
             return $this->render('main/achat.html.twig', [
                 'coupDeCoeur' => $coupDeCoeur,
                 'annonces' => $annonces,
@@ -80,28 +82,71 @@ class MainController extends AbstractController
             ]);
         }
         $annonces = $annoncesRepository->findAllAnonces();
-        if ($request->isMethod('post')){
+        if ($request->isMethod('post')) {
             $annonces = $annoncesRepository->findAnnoncesByFormulaire(
-                $request->get('localisation'),
-                $request->get('typeDeBien'),
-                $request->get('surfaceMin'),
-                $request->get('prixMax'),
-                $request->get('chambre'),
-                $request->get('piece'),
-                $request->get('surfaceBienMax'),
-                $request->get('surfaceBienMin'),
-                $request->get('surfaceTerrainMin'),
-                $request->get('surfaceTerrainMax'),
-                $request->get('piscine'),
-                $request->get('terrasse'),
-                $request->get('balcon'),
-                $request->get('jardin'),
-                $request->get('cave'),
-                $request->get('parking')
+                $this->test($request->get('localisation')),
+                $this->test($request->get('typeDeBien')),
+                $this->test($request->get('surfaceMin')),
+                $this->test($request->get('prixMax')),
+                $this->test($request->get('chambre')),
+                $this->test($request->get('piece')),
+                $this->test($request->get('surfaceBienMax')),
+                $this->test($request->get('surfaceBienMin')),
+                $this->test($request->get('surfaceTerrainMin')),
+                $this->test($request->get('surfaceTerrainMax')),
+                $this->test($request->get('piscine')),
+                $this->test($request->get('terrasse')),
+                $this->test($request->get('balcon')),
+                $this->test($request->get('jardin')),
+                $this->test($request->get('cave')),
+                $this->test($request->get('parking'))
             );
         }
         $coupDeCoeur = $annoncesRepository->findCoupDeCoeur();
         return $this->render('main/achat.html.twig', [
+            'coupDeCoeur' => $coupDeCoeur,
+            'annonces' => $annonces,
+        ]);
+
+    }
+
+    /**
+     * @Route("/neuf/", name="neuf")
+     */
+    public function neuf(Request $request, AnnoncesRepository $annoncesRepository): Response
+    {
+        if ($request->isXmlHttpRequest()) {
+            $loctableau = [];
+            $localisation = $annoncesRepository->findLocalisation();
+            foreach ($localisation as $loc) {
+                array_push($loctableau, $loc['localisation']);
+            }
+            return new JsonResponse([
+                'loc' => $loctableau
+            ]);
+        }
+        $annonces = $annoncesRepository->findAllAnoncesNeuf();
+        if ($request->isMethod('post')) {
+            $annonces = $annoncesRepository->findAnnoncesNeuf(
+                $this->test($request->get('localisation')),
+                $this->test($request->get('surfaceMin')),
+                $this->test($request->get('prixMax')),
+                $this->test($request->get('chambre')),
+                $this->test($request->get('piece')),
+                $this->test($request->get('surfaceBienMax')),
+                $this->test($request->get('surfaceBienMin')),
+                $this->test($request->get('surfaceTerrainMin')),
+                $this->test($request->get('surfaceTerrainMax')),
+                $this->test($request->get('piscine')),
+                $this->test($request->get('terrasse')),
+                $this->test($request->get('balcon')),
+                $this->test($request->get('jardin')),
+                $this->test($request->get('cave')),
+                $this->test($request->get('parking'))
+            );
+        }
+        $coupDeCoeur = $annoncesRepository->findCoupDeCoeur();
+        return $this->render('main/neuf.html.twig', [
             'coupDeCoeur' => $coupDeCoeur,
             'annonces' => $annonces,
         ]);
@@ -115,37 +160,37 @@ class MainController extends AbstractController
     {
         if ($request->isMethod('POST')) {
             $bien = null;
-            if ($request->get('appartement') == true) {
+            if ($this->test($request->get('appartement')) == true) {
                 $bien = 'appartement';
             }
-            if ($request->get('villa') == true) {
+            if ($this->test($request->get('villa')) == true) {
                 $bien = 'villa';
             }
-            if ($request->get('chateau') == true) {
+            if ($this->test($request->get('chateau')) == true) {
                 $bien = 'chateau';
             }
-            if ($request->get('immeuble') == true) {
+            if ($this->test($request->get('immeuble')) == true) {
                 $bien = 'immeuble';
             }
-            if ($request->get('bureaux') == true) {
+            if ($this->test($request->get('bureaux')) == true) {
                 $bien = 'bureaux';
             }
             $emailContact = (new Email())
-                ->from($request->get('email'))
-                ->to('admin@mail.fr')
+                ->from($this->test($request->get('email')))
+                ->to('contact@jade-immobilier.fr')
                 ->priority(Email::PRIORITY_HIGH)
                 ->subject('Une nouvel demande de devis de vente')
                 ->text(
                     'Le client: ' .
-                    $request->get('name') . ', numéro: ' .
-                    $request->get('tel') . ' a une demande pour une vente: ' .
+                    $this->test($request->get('name')) . ', numéro: ' .
+                    $this->test($request->get('tel')) . ' a une demande pour une vente: ' .
                     $bien . ' disponibilité du bien le: ' .
-                    $request->get('trip-start') . ' d\'une surface de: ' .
-                    $request->get('surface') . ', adresse: ' .
-                    $request->get('adress') . ', codepostal: ' .
-                    $request->get('code') . ', ville: ' .
-                    $request->get('ville') . ', decscritpion:  ' .
-                    $request->get('description') . '.'
+                    $this->test($request->get('trip-start')) . ' d\'une surface de: ' .
+                    $this->test($request->get('surface')) . ', adresse: ' .
+                    $this->test($request->get('adress')) . ', codepostal: ' .
+                    $this->test($request->get('code')) . ', ville: ' .
+                    $this->test($request->get('ville')) . ', decscritpion:  ' .
+                    $this->test($request->get('description')) . '.'
                 );
             try {
                 $mailer->send($emailContact);
@@ -178,22 +223,22 @@ class MainController extends AbstractController
      */
     public function contact(Request $request, MailerInterface $mailer, AnnoncesRepository $annoncesRepository): Response
     {
-        if ($request->get('info')!= null){
+        if ($request->get('info') != null) {
             $annonce = $annoncesRepository->find($request->get('info'));
 
         }
         if ($request->isMethod('POST') && $request->get('consentement') == true) {
             $subject = '';
-            if ($request->get('info')!= null){
-                $subject = 'Une nouvel demande de contact pour:'.$annonce->getTitle().' à '.$annonce->getLocalisation();
-            }else{
-                $subject= 'Une nouvel demande de contact';
+            if ($request->get('info') != null) {
+                $subject = 'Une nouvel demande de contact pour:' . $annonce->getTitle() . ' à ' . $annonce->getLocalisation();
+            } else {
+                $subject = 'Une nouvel demande de contact';
             }
 
 
             $emailContact = (new Email())
                 ->from($request->get('email'))
-                ->to('admin@mail.fr')
+                ->to('contact@jade-immobilier.fr')
                 ->priority(Email::PRIORITY_HIGH)
                 ->subject($subject)
                 ->text('Le client: ' . $request->get('name') . ', numéro: ' . $request->get('tel') . ' a un message pour vous: ' . $request->get('description'));
@@ -239,7 +284,7 @@ class MainController extends AbstractController
      */
     public function actuShow(Request $request, $slug, ArticlesRepository $articlesRepository): Response
     {
-        $article = $articlesRepository->findOneBy(['slug'=>$slug]);
+        $article = $articlesRepository->findOneBy(['slug' => $slug]);
         $articleSimilaire = $articlesRepository->findSimilaire($article->getCategorie());
         return $this->render('main/actuShow.html.twig', [
             'article' => $article,
@@ -252,9 +297,17 @@ class MainController extends AbstractController
      */
     public function presentationBien($slug, Request $request, AnnoncesRepository $annoncesRepository): Response
     {
-        $annonce = $annoncesRepository->findOneBy(['slug'=>$slug]);
+        $annonce = $annoncesRepository->findOneBy(['slug' => $slug]);
         return $this->render('main/presentationBien.html.twig', [
             'annonce' => $annonce,
         ]);
+    }
+
+    function test($data): string
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }

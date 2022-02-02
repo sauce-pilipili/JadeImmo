@@ -22,6 +22,18 @@ class AnnoncesType extends AbstractType
                 'attr' => [
                     'class' => 'inputForm']
             ])
+            ->add('statutDeVente', ChoiceType::class, [
+                'label' => false,
+                'choices' => [
+                    'Statut de la vente'=> '',
+                    'Nouveauté'=> 'NOUVEAUTÉ',
+                    'Vendu' => 'VENDU',
+                    'Sous compromis' => 'SOUS COMPROMIS',
+                ],
+                'attr' => [
+                    'class' => 'inputForm',
+                ]
+            ])
             ->add('metaDescription', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -69,6 +81,7 @@ class AnnoncesType extends AbstractType
                     'Terrain' => 'Terrain',
                     'Propriété/Chateau' => 'Propriété/Chateau',
                     'Immeuble' => 'Immeuble',
+                    'Neuf'=> 'Neuf'
                 ],
                 'attr' => [
 

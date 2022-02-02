@@ -147,7 +147,7 @@ class ArticlesController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             if ($article->getImageEnAvant()!=null){
-                unlink($this->getParameter('images_directory') . '/' . $article->getImageEnAvant()->getName());
+//                unlink($this->getParameter('images_directory') . '/' . $article->getImageEnAvant());
             }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);

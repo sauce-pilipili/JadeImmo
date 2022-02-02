@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jade Immobilier{% endblock %}
-
 {% block body %}
     {{ include('_include/_indexcouverture.html.twig') }}
     <section class="container-home">
@@ -12,12 +10,11 @@
             <div class="home-img">
                 <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
             </div>
-            <div class="home-title container-large">
+            <div class="home-title container-medium">
                 <h1><span class="title-anim">JADE<span class="title-grey">IMMOBILIER</span></span></h1>
             </div>
             <div class="container-search search-mobile">
-                <form method="post" target="{{ path('achat') }}">
-                    <input type="hidden" value="fromIndex">
+                <form method="post">
                     <div class="border-right custom-select">
                         <select class="" name="localisation" id="select-localisation">
                             <option value="">Localisation</option>
@@ -56,10 +53,10 @@
                             <div class="dropdown-row">
                                 <label for="chambre">Nombre de chambres</label>
                                 <div class="dropdown-spinner">
-                                    <span class="spinner" onclick="majQuantite(-1,'chambre')" >-</span>
+                                    <span class="spinner" onclick="majQuantite(-1,'chambre')">-</span>
                                     <input class="quanti-invitati" type="number" value="0" min="0" max="20" id="chambre"
                                            name="chambre">
-                                    <span class="spinner" onclick="majQuantite(+1,'chambre')" >+</span>
+                                    <span class="spinner" onclick="majQuantite(+1,'chambre')">+</span>
                                 </div>
 
                             </div>
@@ -153,16 +150,13 @@
             <img src="{{ asset('img/agence-jade.jpg') }}" alt="">
         </div>
         <div class="agency-desc bloc-text">
-            <h2>Jade, une agence <br>à votre service</h2>
-            <p>Agence immobilière située à Bordeaux centre, nous vous guidons pour l’achat ou la vente de votre bien
-                immobilier dans la région Bordelaise, le Bassin d'Arcachon ou encore le Cap Ferret. Savoir-faire,
-                proximité et écoute sont au cœur des valeurs de Jade qui met à votre service une équipe d’agents
-                immobiliers experts dans leur domaine. Tout au long du projet, nous vous assurons un suivi personnalisé
-                et un accompagnement sur-mesure pour répondre au mieux à votre demande. Chez Jade, nous nous engageons à
-                vous trouver le bien immobilier qui vous correspond ou vous présenter l’opportunité de vente que vous
-                attendiez. </p>
+            <h2>Jade Immobilier, <br>une agence à votre service</h2>
+            <p>Vendre ou acheter un bien immobilier est l’un des projets les plus importants dans une vie. Votre projet
+                est unique et vous aussi. C’est pour cela que chez Jade, nous vous assurons un suivi sur-mesure et un
+                accompagnement personnalisé. De Bordeaux au Cap Ferret, notre équipe mobilise tout son savoir-faire et
+                active ses réseaux pour trouver l’opportunité d’achat ou de vente qui vous correspond.</p>
             <div>
-                <a class="button-1" href="{{ path('agence') }}">Découvrir l'agence</a>
+                <a class="button-1" href="{{ path('agence') }}">Découvrir Jade</a>
             </div>
         </div>
     </section>
@@ -170,37 +164,44 @@
     <section class="container-bg">
         <div class="onsale">
             <div class="container-medium onsale-desc bloc-text">
-                <h2>Les biens immobiliers en vente</h2>
-                <p>Jade Immobilier vous propose des biens d’exception à la hauteur de vos attentes. <br>Maison,
-                    appartement, villa, autant de biens immobiliers disponibles dans la région.</p>
+                <h2>Les biens Immobiliers en vente</h2>
+                <p>Découvrez les maisons, appartements ou villas d'exception à vendre dans la région.</p>
             </div>
-            <div class="onsale-bg">
+            <div class="onsale-bg container-medium">
                 <div class="onsale-item">
-                    <div class="onsale-bloc carousel">
+                    <div class="onsale-bloc carousel carousel-home">
                         {% for annonce in annonces %}
                             <div class="onsale-bloc-item">
                                 <a href="{{ path('presentation',{slug: annonce.slug}) }}">
                                     <div class="item-desc-img">
-                                        <img src="{{ asset('uploads/'~ annonce.imageEnAvant) }}" alt="">
+                                        {% if annonce.statutDeVente != null %}
+                                            <div class="bandeau-image">
+                                                {{ annonce.statutDeVente }}
+                                            </div>
+                                        {% endif %}
+                                        <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
                                     </div>
                                     <div class="bloc-item-desc">
-                                        <h3>{{ annonce.localisation }}</h3>
+                                        <h3>{{ annonce.title }}</h3>
                                         <div class="item-desc">
                                             <p>{{ annonce.surfaceHabitable }} m2</p>
                                             <p>{{ annonce.nombreDeChambre }}ch</p>
                                             {% if annonce.parking %}
                                                 <p>Parking</p>
                                             {% endif %}
-                                            <p>Terrain {{ annonce.surfaceDuTerrain }} m2</p>
+                                            {% if annonce.surfaceDuTerrain != 0 %}
+                                                <p>Terrain {{ annonce.surfaceDuTerrain }} m2</p>
+                                            {% endif %}
                                         </div>
-                                        <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ')}} €</p>
+                                        <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ') }}
+                                            €</p>
                                     </div>
                                 </a>
                             </div>
                         {% endfor %}
 
                     </div>
-                    <div class="onsale-button-bloc prevandnext">
+                    <div class="onsale-button-bloc-home prevandnext">
                         <div class="button-prev prev">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
                                 <path xmlns="http://www.w3.org/2000/svg"
@@ -230,13 +231,22 @@
             {% for coeur in coupDeCoeur |slice(0,3) %}
                 <a href="{{ path('presentation',{slug: coeur.slug}) }}">
                     <div class="love-item">
-                        <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
-                        <h3>{{ coeur.localisation }}</h3>
+                        <div class="love-item_cadre-img">
+                            {% if coeur.statutDeVente != null %}
+                                <div class="bandeau-image">
+                                    {{ annonce.statutDeVente }}
+                                </div>
+                            {% endif %}
+                            <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                        </div>
+                        <h3>{{ coeur.title }}</h3>
                         <div class="item-desc">
                             <p>{{ coeur.surfaceHabitable }}m2</p>
                             <p>{{ coeur.nombreDeChambre }}ch</p>
                             <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
-                            <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                            {% if coeur.surfaceDuTerrain != 0 %}
+                                <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
@@ -247,9 +257,9 @@
 
     <section class="container-large">
         <div class="container-contact border-top-bottom">
-            <h2>Vous cherchez à acheter ou vendre un bien d’exception ? </h2>
-            <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de
-                vente.</p>
+            <h2>Vous cherchez à acheter ou vendre un bien d’exception ?</h2>
+            <p>Faites confiance à Jade Immobilier. Nous garantissons l’accompagnement, l’écoute et le savoir-faire dont
+                vous avez besoin pour mener à bien votre projet.</p>
             <div class="button-1">
                 <a href="{{ path('contact') }}">Contactez-nous</a>
             </div>
@@ -257,12 +267,15 @@
     </section>
     {{ include('_include/_mainFooter.html.twig') }}
     <script>
-        function majQuantite(qte, champ)
-        {
+        function majQuantite(qte, champ) {
             quant = document.getElementById(champ).value;
             quantite = parseInt(quant) + parseInt(qte);
-            // if (quantite <= 0) {quantite = 0;}
-            if (quantite > 20) {quantite = 20;}
+            if (quantite <= 0) {
+                quantite = 0;
+            }
+            if (quantite > 20) {
+                quantite = 20;
+            }
             document.getElementById(champ).value = quantite;
         }
     </script>

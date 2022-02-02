@@ -1,0 +1,199 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Neuf{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Chez Jade, nous proposons à la vente des biens d'exceptions. Nous vous accompagnons dans la recherche du bien qui comblera toutes vos attentes.">
+{% endblock %}
+
+{% block body %}
+    <section class="container-home-bis">
+        <div class="container-header-bis">
+
+            {{ include('_include/_mainNavigation.html.twig') }}
+
+
+            <div class="home-img-bis">
+                <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
+            </div>
+            <div class="home-title-search container-large">
+                <div class="home-title-bis">
+                    <h1><span class="title-anim-bis">Les programmes neufs</span></h1>
+                </div>
+                <div class="container-search-bis">
+                    <form method="post" >
+                        <div class="border-right custom-select">
+                            <select class="" name="localisation" id="select-localisation">
+                                <option value="">Localisation</option>
+                            </select>
+                        </div>
+                        <div class="border-right">
+                            <input type="text" name="surfaceMin" id="" placeholder="Surface minimum">
+                            <span>m2</span>
+                        </div>
+                        <div class="border-none">
+                            <input type="text" name="prixMax" id="prixMax" placeholder="Prix maximum">
+                            <span>€</span>
+                        </div>
+                        <input class="button-1" type="submit">
+                        <div class="dropdown">
+                            <div onclick="myFunctionBis()" class="dropbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24"
+                                     width="24">
+                                    <path xmlns="http://www.w3.org/2000/svg"
+                                          d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z"
+                                          fill="#0D0D0D"></path>
+                                </svg>
+                            </div>
+                            <div id="myDropdownachat" class="dropdown-content">
+                                <div class="dropdown-row">
+                                    <label for="chambre">Nombre de chambres</label>
+                                    <div class="dropdown-spinner">
+                                        <span class="spinner" onclick="majQuantite(-1,'chambre')" >-</span>
+                                        <input class="quanti-invitati" type="number" value="0" min="0" max="20" id="chambre"
+                                               name="chambre">
+                                        <span class="spinner" onclick="majQuantite(+1,'chambre')" >+</span>
+                                    </div>
+
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="piece">Nombre de pièces</label>
+                                    <div class="dropdown-spinner">
+                                        <span class="spinner-bis" onclick="majQuantite(-1,'piece')">-</span>
+                                        <input class="quanti-invitati-bis" type="number" value="0" min="0" max="20"
+                                               id="piece" name="piece">
+                                        <span class="spinner-bis" onclick="majQuantite(+1,'piece')">+</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="surface-bien">Surface du bien</label>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-bien" name="surfaceBienMin"
+                                                   placeholder="Surface minimum"><span>m2</span>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-bien" name="surfaceBienMax"
+                                                   placeholder="Surface maximum"><span>m2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <label for="surface-terrain">Surface du terrain</label>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-terrain" name="surfaceTerrainMin"
+                                                   placeholder="Surface minimum"><span>m2</span>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <input type="number" id="surface-terrain" name="surfaceTerrainMax"
+                                                   placeholder="Surface maximum"><span>m2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-row">
+                                    <p>Équipement</p>
+                                    <div class="dropdown-bloc">
+                                        <div class="dropdown-col">
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="piscine" name="piscine">
+                                                <label for="piscine">Piscine</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="terrasse" name="terrasse">
+                                                <label for="terrasse">Terrasse</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="balcon" name="balcon">
+                                                <label for="balcon">Balcon</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="dropdown-col">
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="jardin" name="jardin">
+                                                <label for="jardin">Jardin</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="cave" name="cave">
+                                                <label for="cave">Cave</label>
+                                            </div>
+                                            <div class="dropdown-item-2">
+                                                <input type="checkbox" id="parking" name="parking">
+                                                <label for="parking">Parking</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-onsale container-large">
+        {{ include('main/_ContentAnnonces.html.twig') }}
+    </section>
+
+    <section class="container-large button-plus">
+        <div class="button-1">
+            <a href="{{ path('achat') }}">Voir plus de biens</a>
+        </div>
+    </section>
+
+    <section class="container-love container-large">
+        <h2>Les coups de coeur de Jade</h2>
+        <div class="bloc-love">
+            {% for coeur in coupDeCoeur |slice(0,3) %}
+                <a href="{{ path('presentation',{slug: coeur.slug}) }}">
+                    <div class="love-item">
+                        <div class="love-item_cadre-img">
+                            <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                        </div>
+                        <h3>{{ coeur.title }}</h3>
+                        <div class="item-desc">
+                            <p>{{ coeur.surfaceHabitable }}m2</p>
+                            <p>{{ coeur.nombreDeChambre }}ch</p>
+                            <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
+                            {% if coeur.surfaceDuTerrain != 0 %}
+                                <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <section class="container-large">
+        <div class="container-contact border-top-bottom">
+            <h2>Vous cherchez à acheter ou vendre un bien d’exception ? </h2>
+            <p>Conseils, suivi, accompagnement, nous vous accompagnons tout au long du processus d’achat et de vente.</p>
+            <div class="button-1">
+                <a href="">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+    {{ include('_include/_mainFooter.html.twig') }}
+    <script>
+        function majQuantite(qte, champ)
+        {
+            quant = document.getElementById(champ).value;
+            quantite = parseInt(quant) + parseInt(qte);
+            if (quantite <= 0) {quantite = 0;}
+            if (quantite > 20) {quantite = 20;}
+            document.getElementById(champ).value = quantite;
+        }
+    </script>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/search-select.js') }}"></script>
+    <script src="{{ asset('js/localisation.js') }}"></script>
+{% endblock %}

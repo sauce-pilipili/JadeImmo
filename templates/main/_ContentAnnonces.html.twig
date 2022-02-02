@@ -1,19 +1,26 @@
 {% for annonce in annonces %}
-
-    <div class="container-onsale-item" >
+    <div class="container-onsale-item">
         <a href="{{ path('presentation',{slug: annonce.slug}) }}">
             <div class="container-onsale-item-img">
-                <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
+                <div>
+                    {% if annonce.statutDeVente != null %}
+                        <div class="bandeau-image">
+                            {{ annonce.statutDeVente }}
+                        </div>
+                    {% endif %}
+                    <img src="{{ asset('/uploads/'~ annonce.imageEnAvant) }}" alt="">
+                </div>
             </div>
-            <h3>{{ annonce.localisation }}</h3>
+            <h3>{{ annonce.title }}</h3>
             <div class="item-desc">
                 <p>{{ annonce.surfaceHabitable }} m2</p>
                 <p>{{ annonce.nombreDeChambre }}ch</p>
                 <p>{{ annonce.nombreDeSalleDebain }}sdb</p>
-                <p>Terrain {{ annonce.surfaceDuTerrain}}m2</p>
-
+                {% if annonce.surfaceDuTerrain != 0 %}
+                    <p>Terrain {{ annonce.surfaceDuTerrain }} m2</p>
+                {% endif %}
             </div>
-            <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ')}} €</p>
+            <p class="item-desc-price">{{ annonce.prixAvecHonoraires |number_format(0,'.',' ') }} €</p>
         </a>
     </div>
 {% endfor %}

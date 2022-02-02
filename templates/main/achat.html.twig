@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jade Immobilier-Acheter{% endblock %}
+{% block title %}Acheter{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Chez Jade, nous proposons à la vente des biens d'exceptions. Nous vous accompagnons dans la recherche du bien qui comblera toutes vos attentes.">
+{% endblock %}
 
 {% block body %}
 <section class="container-home-bis">
@@ -154,25 +158,30 @@
     </div>
 </section>
 
-<section class="container-love container-large">
-    <h2>Les coups de coeur de Jade</h2>
-    <div class="bloc-love">
-        {% for coeur in coupDeCoeur |slice(0,3) %}
-            <a href="{{ path('presentation',{slug: coeur.slug}) }}">
-                <div class="love-item">
-                    <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
-                    <h3>{{ coeur.localisation }}</h3>
-                    <div class="item-desc">
-                        <p>{{ coeur.surfaceHabitable }}m2</p>
-                        <p>{{ coeur.nombreDeChambre }}ch</p>
-                        <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
-                        <p>terrain {{ coeur.surfaceDuTerrain }} m2</p>
+    <section class="container-love container-large">
+        <h2>Les coups de coeur de Jade</h2>
+        <div class="bloc-love">
+            {% for coeur in coupDeCoeur |slice(0,3) %}
+                <a href="{{ path('presentation',{slug: coeur.slug}) }}">
+                    <div class="love-item">
+                        <div class="love-item_cadre-img">
+                            <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                        </div>
+                        <h3>{{ coeur.title }}</h3>
+                        <div class="item-desc">
+                            <p>{{ coeur.surfaceHabitable }}m2</p>
+                            <p>{{ coeur.nombreDeChambre }}ch</p>
+                            <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
+                            {% if coeur.surfaceDuTerrain != 0 %}
+                                <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-</section>
+                </a>
+            {% endfor %}
+
+        </div>
+    </section>
 
 <section class="container-large">
     <div class="container-contact border-top-bottom">
@@ -189,7 +198,7 @@
         {
             quant = document.getElementById(champ).value;
             quantite = parseInt(quant) + parseInt(qte);
-            // if (quantite <= 0) {quantite = 1;}
+            if (quantite <= 0) {quantite = 0;}
             if (quantite > 20) {quantite = 20;}
             document.getElementById(champ).value = quantite;
         }

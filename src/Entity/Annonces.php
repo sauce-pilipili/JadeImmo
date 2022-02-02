@@ -78,7 +78,7 @@ class Annonces
     private $ImageEnAvant;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesImagesDuo",cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesImagesDuo",cascade={"persist","remove"})
      */
     private $imagesDuo;
 
@@ -163,7 +163,7 @@ class Annonces
     private $systemDeSecurite;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesGalerie",cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Photos::class, mappedBy="annoncesGalerie",cascade={"persist","remove"})
      */
     private $photosGalerie;
 
@@ -186,6 +186,11 @@ class Annonces
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $terrasse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $statutDeVente;
 
     public function __construct()
     {
@@ -584,6 +589,18 @@ class Annonces
     public function setTerrasse(?bool $terrasse): self
     {
         $this->terrasse = $terrasse;
+
+        return $this;
+    }
+
+    public function getStatutDeVente(): ?string
+    {
+        return $this->statutDeVente;
+    }
+
+    public function setStatutDeVente(?string $statutDeVente): self
+    {
+        $this->statutDeVente = $statutDeVente;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jade Immobilier-{{ annonce.title }}{% endblock %}
+{% block title %}Jade Immobilier - {{ annonce.title }}{% endblock %}
 
 {% block body %}
 <section class="container-main">
@@ -16,6 +16,7 @@
             <p>
                 {{ annonce.descriptionDuBien }}
             </p>
+
         </div>
         <div class="bloc-house_row">
             <div>
@@ -36,14 +37,19 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="bloc-house_cadre-img">
+        {% if annonce.statutDeVente != null %}
+            <div class="bandeau-image">
+                {{ annonce.statutDeVente }}
+            </div>
+        {% endif %}
         <img src="{{ asset('/uploads/'~annonce.imageEnAvant) }}" alt="">
     </div>
 </section>
 
 <section class="container-large container-house_img">
     {% for image in annonce.imagesDuo %}
-    <div>
+    <div class="house_cadre-img">
         <img src="{{ asset('/uploads/'~image.name) }}" alt="">
     </div>
     {% endfor %}
@@ -70,6 +76,10 @@
 
     <div>
         <h2>Habitation</h2>
+        <div>
+            <p class="house-item_bold">pièces</p>
+            <p>{{ annonce.nombreDePiece }}</p>
+        </div>
         <div>
             <p class="house-item_bold">Chambres</p>
             <p>{{ annonce.nombreDeChambre }}</p>
@@ -161,7 +171,7 @@
 <section class="container-bg container-carousel">
     <div>
         <h2>La galerie photos</h2>
-        <div class="carousel">
+        <div class="carousel carousel-bien">
             {% for img in annonce.photosGalerie %}
             <img src="{{ asset('/uploads/'~img.name) }}" alt="">
             {% endfor %}
@@ -186,7 +196,7 @@
     <div class="container-contact border-top-bottom">
         <h2>Ce bien vous intéresse ? <br>N’hésitez pas à nous contacter.</h2>
         <div class="button-1">
-            <a href="{{ path('contact',{info: annonce.id}) }}">Contactez-nous</a>
+            <a href="{{ path('contact') }}">Contactez-nous</a>
         </div>
     </div>
 </section>

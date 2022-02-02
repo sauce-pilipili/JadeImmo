@@ -2,6 +2,8 @@
 <p>Ajouter un titre</p>
 <span>Maximum 80 caractères</span>
 {{ form_row(form.title) }}
+<p>Statut de la vente</p>
+{{ form_row(form.statutDeVente) }}
 <p>Ajouter une meta description</p>
 <span>Maximum 156 caractères</span>
 {{ form_row(form.metaDescription) }}
@@ -33,21 +35,25 @@
 {{ form_row(form.localisation) }}
 
 <p>Ajouter une image de mise en avant</p>
- <div class="upload-1">
- {{ form_row(form.ImageEnAvant,{'attr': {'class': 'article_photoEnAvant', 'onchange':"handleFilesAvant(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
+<div class="upload-1">
+    {{ form_row(form.ImageEnAvant,{'attr': {'class': 'article_photoEnAvant', 'onchange':"handleFilesAvant(files)",'id' : 'upload', 'multiple name': 'file'}}) }}
     <div class="preview-image">
         <label for="upload">
             <span id="previewAvant">
                 {% if app.request.attributes.get('_route') == 'annonces_edit' %}
                     {% if annonce.ImageEnAvant != null %}
-                        <img class="image-preview" src="{{ asset('/uploads/'~annonce.ImageEnAvant.name) }}" alt="">
+                        <img class="image-preview" src="{{ asset('/uploads/'~annonce.ImageEnAvant) }}" alt="">
                     {% endif %}
-                 {% endif %}
+                {% endif %}
             </span>
         </label>
     </div>
- <span id="file-select-button-1" class="browse button black">{% if app.request.attributes.get('_route') == 'annonces_new' %}Ajouter une photo {% endif %}{% if app.request.attributes.get('_route') == 'annonces_edit' %}Modifier la photo {% endif %}<i class="fa fa-plus"></i></span>
- </div>
+    <span id="file-select-button-1" class="browse button black">
+     {% if app.request.attributes.get('_route') == 'annonces_new' %}Ajouter une photo {% endif %}
+        {% if app.request.attributes.get('_route') == 'annonces_edit' %}Modifier la photo {% endif %}
+     <i class="fa fa-plus"></i>
+ </span>
+</div>
 
 <p>Ajouter deux images du bien</p>
 <span>Maximum 2 photos</span>
@@ -62,7 +68,7 @@
              <div class="imageFormPreview">
                     <img src="{{ asset('/uploads/'~image.name) }}" alt="">
                     <a href="{{ path('annonces_delete_image_duo', {id: image.id}) }}" data-delete
-                     data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
+                       data-token="{{ csrf_token('delete' ~ image.id ) }}"><i class="fas fa-trash fa-2x"></i></a>
              </div>
          {% endfor %}
      {% endif %}

@@ -25,7 +25,7 @@ class Photos
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="imageEnAvant",orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="imageEnAvant")
      */
     private $articleImagesEnAvant;
 
@@ -35,14 +35,14 @@ class Photos
     private $annoncesImagesDuo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="photosGalerie",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="photosGalerie")
      */
     private $annoncesGalerie;
 
     public function __construct()
     {
         $this->articleImagesEnAvant = new ArrayCollection();
-        $this->annonceImageEnAvant = new ArrayCollection();
+
     }
 
     public function getId(): ?int

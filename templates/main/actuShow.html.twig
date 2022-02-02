@@ -2,19 +2,19 @@
 {% block meta %}
     <meta name="description" content="{{ article.metaDescription }}">
 {% endblock %}
-{% block title %}Jade Immobilier-Actualité{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block body %}
 <section class="container-home-bis">
     <div class="container-header-bis">
         {{ include('_include/_mainNavigation.html.twig') }}
         <div class="home-img-bis">
-            <img src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
+            <img class="img-actu" src="{{ asset('img/jade-accueil-img.jpg') }}" alt="">
         </div>
         <div class="home-title-search container-large">
             <div class="home-title-bis">
                 <h1><span class="title-anim-bis">{{ article.title }}</span></h1>
-                <p>Publié le:  {{ article.createdDate|date('d - m - Y') }}</p>
+                <p>Publié le {{ article.createdDate|date('d - m - Y') }}</p>
             </div>
         </div>
     </div>

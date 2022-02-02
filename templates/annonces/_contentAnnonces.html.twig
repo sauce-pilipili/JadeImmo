@@ -1,3 +1,5 @@
+
+
 {% for annonce in annonces %}
     <tr>
 
@@ -5,6 +7,7 @@
         <td>{{ annonce.coupDeCoeur ? 'Oui' : 'Non' }}</td>
         <td>{{ annonce.localisation }}</td>
         <td>{{ annonce.prixAvecHonoraires }}</td>
+        <td>{{ annonce.statutDeVente }}</td>
         <td>
             {{ include('annonces/_delete_form.html.twig') }}
         </td>

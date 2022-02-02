@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jade Immobilier-Actualité{% endblock %}
+{% block title %}Les actualités de l'agence{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Suivez toutes les actualités de l'Agence Jade à Bordeaux. Nous vous informons sur l'immobilier à Bordeaux, mais aussi sur l'agence et tous nos biens. ">
+{% endblock %}
 
 {% block body %}
 <section class="container-home-bis">
@@ -41,19 +45,24 @@
     <h2>Les coups de coeur de Jade</h2>
     <div class="bloc-love">
         {% for coeur in coupDeCoeur |slice(0,3) %}
-            <a href="{{ path('presentation',{id: coeur.id}) }}">
+            <a href="{{ path('presentation',{slug: coeur.slug}) }}">
                 <div class="love-item">
-                    <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                    <div class="love-item_cadre-img">
+                        <img src="{{ asset('/uploads/'~coeur.imageEnAvant) }}" alt="">
+                    </div>
                     <h3>{{ coeur.localisation }}</h3>
                     <div class="item-desc">
                         <p>{{ coeur.surfaceHabitable }}m2</p>
                         <p>{{ coeur.nombreDeChambre }}ch</p>
                         <p>{{ coeur.nombreDeSalleDeBain }}sdb</p>
-                        <p>terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                        {% if coeur.surfaceDuTerrain != 0 %}
+                            <p>Terrain {{ coeur.surfaceDuTerrain }} m2</p>
+                        {% endif %}
                     </div>
                 </div>
             </a>
         {% endfor %}
+
     </div>
 </section>
 
